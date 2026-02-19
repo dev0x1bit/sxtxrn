@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../../lib/supabase'; // Importa tu conexión
+import { supabase } from '../../lib/supabase'; 
 import './P1_Inicio.css'; 
 
 const P1_Inicio = () => {
@@ -8,19 +8,25 @@ const P1_Inicio = () => {
   const [menuAbierto, setMenuAbierto] = useState(false);
   const [facultades, setFacultades] = useState([]);
   const [cargando, setCargando] = useState(true);
+  const [session, setSession] = useState(null); // <-- NUEVO ESTADO
   const navigate = useNavigate();
 
-  // EFECTO: Traer la data real de Supabase
   useEffect(() => {
+    // CHEQUEO DE SESIÓN
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
     const fetchFacultades = async () => {
       try {
         setCargando(true);
-        // Usamos 'tab_facultades' y pedimos la columna 'nombre'
         const { data, error } = await supabase
           .from('tab_facultades') 
           .select('*')
           .order('nombre', { ascending: true });
-
         if (error) throw error;
         setFacultades(data || []);
       } catch (error) {
@@ -31,24 +37,20 @@ const P1_Inicio = () => {
     };
 
     fetchFacultades();
+    return () => subscription.unsubscribe();
   }, []);
 
-  // FILTRADO: Filtramos sobre la columna 'nombre' de tu tabla
   const resultadosFiltrados = facultades.filter(f => 
     f.nombre && f.nombre.toLowerCase().includes(busqueda.toLowerCase())
   );
 
   return (
     <div className="p1-layout">
-      
-      {/* BARRA SUPERIOR */}
       <header className="top-bar">
         <div className="search-container">
           <span 
             className="prompt" 
-            onClick={() => {
-              if (menuAbierto) setMenuAbierto(false);
-            }}
+            onClick={() => menuAbierto && setMenuAbierto(false)}
             style={{ cursor: menuAbierto ? 'pointer' : 'default' }}
           >
             {menuAbierto ? '<' : '>'}
@@ -62,12 +64,25 @@ const P1_Inicio = () => {
             onFocus={() => setMenuAbierto(true)} 
           />
         </div>
-        <div className="user-icon">
-          [ USUARIO ]
+
+        {/* BOTÓN DE USUARIO DINÁMICO */}
+        <div 
+          className="user-icon" 
+          onClick={() => !session ? navigate('/login') : console.log("Ir al perfil")}
+          style={{ cursor: 'pointer' }}
+        >
+          {session ? (
+            <img 
+              src={session.user.user_metadata.avatar_url} 
+              alt="avatar" 
+              style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #00ff41' }} 
+            />
+          ) : (
+            "[ LOGIN ]"
+          )}
         </div>
       </header>
 
-      {/* CENTRO: CONDICIONAL */}
       <main className={menuAbierto ? "main-content-list" : "main-content"}>
         {menuAbierto ? (
           <div className="full-screen-menu">
@@ -79,7 +94,6 @@ const P1_Inicio = () => {
                   key={item.id} 
                   className="full-screen-item"
                   onClick={() => {
-                    // Navegamos usando el nombre formateado
                     const parametro = item.nombre.toLowerCase().replace(/ /g, '-');
                     navigate(`/facultad/${parametro}`);
                   }}
@@ -99,7 +113,6 @@ const P1_Inicio = () => {
         )}
       </main>
 
-      {/* BARRA INFERIOR */}
       <footer className="bottom-bar">
         <div 
           className="home-icon" 
@@ -112,7 +125,6 @@ const P1_Inicio = () => {
           [ ⌂ ]
         </div>
       </footer>
-
     </div>
   );
 };
