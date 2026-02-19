@@ -1,65 +1,85 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { supabase } from '../../lib/supabase';
 import LaTeX from 'react-latex-next';
 import './P5_Ejercicio_Detalle.css';
 
 const P5_Ejercicio_Detalle = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // ID del ejercicio (proviene de la URL)
   const navigate = useNavigate();
   
+  const [ejercicio, setEjercicio] = useState(null);
+  const [hilo, setHilo] = useState([]);
+  const [cargando, setCargando] = useState(true);
   const [childrenHidden, setChildrenHidden] = useState({});
   const [isAllCollapsed, setIsAllCollapsed] = useState(false);
 
-  // RESOLUCIÓN COMPLETA DEL EJERCICIO 1
-  const ejercicioData = {
-    tag: "EJERCICIO 1",
-    enunciado: "Calcular $\\lim_{n\\to\\infty} (\\sqrt[n]{2^n + 5^n}) \\left(\\frac{2n+3}{2n+9}\\right)^n$.",
-    hilo: [
-      {
-        id: "step1",
-        autor: "SXTXRN_SYS",
-        math: "$1. \\text{ Análisis de la raíz } \\sqrt[n]{2^n + 5^n}:$",
-        texto: "Sacamos factor común el término dominante $5^n$: $\\sqrt[n]{5^n ((\\frac{2}{5})^n + 1)}$. Por propiedad: $5 \\cdot \\sqrt[n]{(\\frac{2}{5})^n + 1}$. Como $(\\frac{2}{5})^n \\to 0$, la raíz tiende a $1$. Resultado parcial: $5$.",
-        votos: 124,
-        respuestas: [
-          { id: "h1", autor: "el_pibe_analisis", texto: "Clave sacar el $5^n$, yo siempre me trababa ahí.", votos: 15 },
-          { id: "h2", autor: "mat_lover", texto: "Recordá que esto vale porque $5 > 2$.", votos: 8 }
-        ]
-      },
-      {
-        id: "step2",
-        autor: "SXTXRN_SYS",
-        math: "$2. \\text{ Forma del número } e \\text{ en } (\\frac{2n+3}{2n+9})^n:$",
-        texto: "Sumamos y restamos $1$ para llevarlo a la forma $(1 + \\frac{1}{x})$. Nos queda: $[1 + \\frac{-6}{2n+9}]^n$.",
-        votos: 98,
-        respuestas: [
-          { id: "h3", autor: "duda_guy", texto: "¿De dónde salió el $-6$?", votos: 2 },
-          { id: "h4", autor: "pro_helper", texto: "Hizo $(2n+3) - (2n+9) = -6$, es un truco para no hacer división de polinomios.", votos: 22 }
-        ]
-      },
-      {
-        id: "step3",
-        autor: "SXTXRN_SYS",
-        math: "$3. \\text{ Cálculo del exponente:}$",
-        texto: "Llevamos el límite al exponente: $e^{\\lim_{n\\to\\infty} n \\cdot (\\frac{-6}{2n+9})}$. El límite de $\\frac{-6n}{2n+9}$ es $-3$. Por lo tanto, esta parte tiende a $e^{-3}$.",
-        votos: 156,
-        respuestas: []
-      },
-      {
-        id: "step4",
-        autor: "SXTXRN_SYS",
-        math: "$\\text{RESULTADO FINAL:}$",
-        texto: "Juntando ambas partes: $5 \\cdot e^{-3} = \\frac{5}{e^3}$.",
-        votos: 340,
-        respuestas: [
-          { id: "h5", autor: "ingeniero_2026", texto: "¡Excelente! Me dio lo mismo en el simulacro.", votos: 45 }
-        ]
-      }
-    ]
-  };
+  useEffect(() => {
+    const fetchFullDetalle = async () => {
+      try {
+        setCargando(true);
+        
+        // 1. OBTENER INFO BÁSICA DEL EJERCICIO
+        const { data: ejData, error: errEj } = await supabase
+          .from('tab_ejercicios')
+          .select('tag, enunciado')
+          .eq('id', id)
+          .single();
 
-  const toggleChildren = (commentId) => {
-    setChildrenHidden(prev => ({ ...prev, [commentId]: !prev[commentId] }));
+        if (errEj) throw errEj;
+        setEjercicio(ejData);
+
+        // 2. OBTENER LAS RESOLUCIONES OFICIALES
+        const { data: resData, error: errRes } = await supabase
+          .from('tab_resoluciones')
+          .select('*')
+          .eq('ejercicio_id', id)
+          .order('orden', { ascending: true });
+
+        if (errRes) throw errRes;
+
+        // 3. OBTENER COMENTARIOS (MANUAL JOIN)
+        let finalHilo = [];
+        
+        if (resData && resData.length > 0) {
+          const idsResoluciones = resData.map(r => r.id);
+          
+          // Intentamos traer comentarios. Si la columna aún no existe en DB, 
+          // fallará pero no romperá la vista de la resolución.
+          try {
+            const { data: comData, error: errCom } = await supabase
+              .from('tab_comentarios')
+              .select('*')
+              .in('resolucion_id', idsResoluciones);
+
+            if (errCom) throw errCom;
+
+            // Juntamos resoluciones con sus respectivos comentarios
+            finalHilo = resData.map(res => ({
+              ...res,
+              tab_comentarios: comData ? comData.filter(c => c.resolucion_id === res.id) : []
+            }));
+          } catch (errorCom) {
+            console.warn("⚠️ Advertencia: No se pudieron vincular comentarios (posible columna faltante):", errorCom.message);
+            // Si fallan los comentarios, mostramos solo las resoluciones
+            finalHilo = resData.map(res => ({ ...res, tab_comentarios: [] }));
+          }
+        }
+
+        setHilo(finalHilo);
+
+      } catch (err) {
+        console.error("❌ ERROR CRÍTICO EN P5_SXTXRN:", err.message);
+      } finally {
+        setCargando(false);
+      }
+    };
+
+    fetchFullDetalle();
+  }, [id]);
+
+  const toggleChildren = (resId) => {
+    setChildrenHidden(prev => ({ ...prev, [resId]: !prev[resId] }));
   };
 
   const handleGlobalToggle = () => {
@@ -68,64 +88,81 @@ const P5_Ejercicio_Detalle = () => {
       setIsAllCollapsed(false);
     } else {
       const allIds = {};
-      ejercicioData.hilo.forEach(item => { allIds[item.id] = true; });
+      hilo.forEach(item => { allIds[item.id] = true; });
       setChildrenHidden(allIds);
       setIsAllCollapsed(true);
     }
   };
 
+  if (cargando) return <div className="p5-layout">[ ACCEDIENDO AL NÚCLEO DE DATOS... ]</div>;
+  if (!ejercicio) return <div className="p5-layout">[ ERROR: EL EJERCICIO NO EXISTE EN LA DB ]</div>;
+
   return (
     <div className="p5-layout">
+      {/* HEADER: ENUNCIADO DEL EJERCICIO */}
       <header className="p5-header">
         <div className="p5-nav">
-           <span className="back-btn" onClick={() => navigate(-1)}>{'<'} VOLVER AL FEED</span>
-           <span className="user-id">[ {ejercicioData.tag} ]</span>
+           <span className="back-btn" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
+             {'<'} VOLVER AL FEED
+           </span>
+           <span className="user-id">[ {ejercicio.tag || 'EJERCICIO'} ]</span>
         </div>
         <div className="op-enunciado math-render">
-          <LaTeX>{ejercicioData.enunciado}</LaTeX>
+          <LaTeX>{ejercicio.enunciado}</LaTeX>
         </div>
         
         <div className="global-controls">
-          <span className="control-btn" onClick={handleGlobalToggle}>
+          <span className="control-btn" onClick={handleGlobalToggle} style={{ cursor: 'pointer' }}>
             {isAllCollapsed ? '[ EXPANDIR TODO ]' : '[ CONTRAER TODO ]'}
           </span>
         </div>
       </header>
 
+      {/* MAIN: HILO DE RESOLUCIÓN */}
       <main className="p5-thread">
-        {ejercicioData.hilo.map((comentario) => {
-          const areChildrenHidden = childrenHidden[comentario.id];
+        {hilo.map((bloque) => {
+          const areChildrenHidden = childrenHidden[bloque.id];
+          const respuestas = bloque.tab_comentarios || [];
+
           return (
-            <div key={comentario.id} className="comment-group">
+            <div key={bloque.id} className="comment-group">
+              {/* BLOQUE OFICIAL (SXTXRN_SYS) */}
               <div className="comment-parent">
                 <div className="comment-meta">
-                  <span className="author-sys">{comentario.autor}</span> • verificado
+                  <span className="author-sys">{bloque.autor || 'SXTXRN_SYS'}</span> • verificado
                 </div>
                 <div className="comment-body math-render">
-                  <div className="math-block"><LaTeX>{comentario.math}</LaTeX></div>
-                  <div className="text-block"><LaTeX>{comentario.texto}</LaTeX></div>
+                  <div className="math-block">
+                    <LaTeX>{bloque.math_block}</LaTeX>
+                  </div>
+                  <div className="text-block">
+                    <LaTeX>{bloque.text_block}</LaTeX>
+                  </div>
                 </div>
                 <div className="comment-actions">
-                  <span className="votes">▲ {comentario.votos} ▼</span>
+                  <span className="votes">▲ {bloque.votos || 0} ▼</span>
                   <span className="action-link">Responder</span>
-                  <span className="action-link toggle-btn" onClick={() => toggleChildren(comentario.id)}>
-                    {areChildrenHidden ? `[ + ] Mostrar ${comentario.respuestas.length}` : '[ - ] Contraer'}
-                  </span>
+                  {respuestas.length > 0 && (
+                    <span className="action-link toggle-btn" onClick={() => toggleChildren(bloque.id)}>
+                      {areChildrenHidden ? `[ + ] Mostrar ${respuestas.length}` : '[ - ] Contraer'}
+                    </span>
+                  )}
                 </div>
               </div>
 
-              {!areChildrenHidden && comentario.respuestas.map((hijo) => (
-                <div key={hijo.id} className="comment-child">
+              {/* HILO DE COMENTARIOS DE USUARIOS */}
+              {!areChildrenHidden && respuestas.map((com) => (
+                <div key={com.id} className="comment-child">
                   <div className="thread-line"></div>
                   <div className="child-content">
                     <div className="comment-meta">
-                      <span className="author-user">{hijo.autor}</span>
+                      <span className="author-user">{com.autor || 'anon_user'}</span>
                     </div>
                     <div className="comment-body math-render">
-                      <LaTeX>{hijo.texto}</LaTeX>
+                      <LaTeX>{com.texto}</LaTeX>
                     </div>
                     <div className="comment-actions">
-                      <span className="votes">▲ {hijo.votos} ▼</span>
+                      <span className="votes">▲ {com.votos || 0} ▼</span>
                       <span className="action-link">Responder</span>
                     </div>
                   </div>
@@ -136,9 +173,10 @@ const P5_Ejercicio_Detalle = () => {
         })}
       </main>
 
+      {/* FOOTER: INPUT DE DUDA */}
       <footer className="p5-footer">
         <div className="input-wrapper">
-          <input type="text" placeholder="Escribe una duda general..." disabled />
+          <input type="text" placeholder="Escribe una duda sobre este paso..." disabled />
         </div>
       </footer>
     </div>

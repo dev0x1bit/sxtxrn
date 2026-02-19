@@ -1,21 +1,41 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // 1. Importamos la herramienta de viaje
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../../lib/supabase'; // Importa tu conexión
 import './P1_Inicio.css'; 
 
 const P1_Inicio = () => {
   const [busqueda, setBusqueda] = useState('');
   const [menuAbierto, setMenuAbierto] = useState(false);
-  const navigate = useNavigate(); // 2. Inicializamos el navegador
+  const [facultades, setFacultades] = useState([]);
+  const [cargando, setCargando] = useState(true);
+  const navigate = useNavigate();
 
-  const secciones = [
-    "CBC", "UBA XXI", "AGRONOMÍA", "FILOSOFÍA Y LETRAS",
-    "ARQUITECTURA, DISEÑO Y URB", "INGENIERÍA", "DERECHO", "MEDICINA",
-    "ECONÓMICAS", "PSICOLOGÍA", "EXACTAS", "SOCIALES",
-    "FARMACIA Y BIOQUÍMICA", "VETERINARIA"
-  ];
+  // EFECTO: Traer la data real de Supabase
+  useEffect(() => {
+    const fetchFacultades = async () => {
+      try {
+        setCargando(true);
+        // Usamos 'tab_facultades' y pedimos la columna 'nombre'
+        const { data, error } = await supabase
+          .from('tab_facultades') 
+          .select('*')
+          .order('nombre', { ascending: true });
 
-  const resultadosFiltrados = secciones.filter(sec => 
-    sec.toLowerCase().includes(busqueda.toLowerCase())
+        if (error) throw error;
+        setFacultades(data || []);
+      } catch (error) {
+        console.error("Error conectando con el búnker:", error.message);
+      } finally {
+        setCargando(false);
+      }
+    };
+
+    fetchFacultades();
+  }, []);
+
+  // FILTRADO: Filtramos sobre la columna 'nombre' de tu tabla
+  const resultadosFiltrados = facultades.filter(f => 
+    f.nombre && f.nombre.toLowerCase().includes(busqueda.toLowerCase())
   );
 
   return (
@@ -36,7 +56,7 @@ const P1_Inicio = () => {
           <input 
             type="text" 
             className="search-input" 
-            placeholder="BUSCAR SECCIÓN..." 
+            placeholder={cargando ? "CONECTANDO..." : "BUSCAR SECCIÓN..."} 
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
             onFocus={() => setMenuAbierto(true)} 
@@ -51,21 +71,20 @@ const P1_Inicio = () => {
       <main className={menuAbierto ? "main-content-list" : "main-content"}>
         {menuAbierto ? (
           <div className="full-screen-menu">
-            {resultadosFiltrados.length > 0 ? (
-              resultadosFiltrados.map((item, index) => (
+            {cargando ? (
+              <div className="full-screen-item">[ ACCEDIENDO A LA DB... ]</div>
+            ) : resultadosFiltrados.length > 0 ? (
+              resultadosFiltrados.map((item) => (
                 <div 
-                  key={index} 
+                  key={item.id} 
                   className="full-screen-item"
                   onClick={() => {
-                    // 3. LA MAGIA DEL CLICK: 
-                    // Pasa todo a minúsculas y cambia los espacios por guiones medios
-                    const parametro = item.toLowerCase().replace(/ /g, '-');
-                    
-                    // Viajamos a la P2!
+                    // Navegamos usando el nombre formateado
+                    const parametro = item.nombre.toLowerCase().replace(/ /g, '-');
                     navigate(`/facultad/${parametro}`);
                   }}
                 >
-                  [ {item} ]
+                  [ {item.nombre.toUpperCase()} ]
                 </div>
               ))
             ) : (

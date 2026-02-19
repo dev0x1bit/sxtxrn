@@ -1,77 +1,99 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { supabase } from '../../lib/supabase'; 
 import './P2_Facultades.css';
 
 const P2_Facultades = () => {
-  const { id } = useParams(); // Atrapa "ingenieria" de la URL
+  const { id } = useParams(); 
   const navigate = useNavigate();
+  
+  const [materias, setMaterias] = useState([]);
+  const [cargando, setCargando] = useState(true);
 
-  // MOCK DE BASE DE DATOS: Materias falsas para probar la UI
-  const materiasFalsas = [
-    "ÁLGEBRA", "ANÁLISIS MATEMÁTICO I", "FÍSICA I", 
-    "QUÍMICA GENERAL", "PENSAMIENTO CIENTÍFICO",
-    "ÁLGEBRA LINEAL", "PROBABILIDAD Y ESTADÍSTICA"
-  ];
+  useEffect(() => {
+    const traerMateriasReal = async () => {
+      if (!id) return;
 
-  // Formateamos el ID para que se vea con facha en el título (ej: "uba-xxi" -> "UBA XXI")
-  const tituloFacultad = id ? id.toUpperCase().replace(/-/g, ' ') : 'ERROR';
+      try {
+        setCargando(true);
+
+        // 1. Buscamos la facultad por nombre (slug)
+        const { data: facu, error: errorFacu } = await supabase
+          .from('tab_facultades')
+          .select('id')
+          .ilike('nombre', id.replace(/-/g, ' '))
+          .single();
+
+        if (errorFacu) throw errorFacu;
+
+        if (facu) {
+          // 2. IMPORTANTE: Traemos el ID y el NOMBRE de la materia
+          const { data: mats, error: errorMats } = await supabase
+            .from('tab_materias')
+            .select('id, nombre') // <-- Traemos el ID para la navegación
+            .eq('facultad_id', facu.id)
+            .order('nombre', { ascending: true });
+
+          if (errorMats) throw errorMats;
+          
+          // Guardamos el objeto completo (id y nombre)
+          setMaterias(mats);
+        }
+      } catch (err) {
+        console.error("Error en el búnker P2:", err.message);
+      } finally {
+        setCargando(false);
+      }
+    };
+
+    traerMateriasReal();
+  }, [id]);
+
+  const tituloFacultad = id ? id.toUpperCase().replace(/-/g, ' ') : 'SXTXRN';
 
   return (
     <div className="p2-layout">
-      
-      {/* BARRA SUPERIOR (Con botón para volver atrás) */}
       <header className="top-bar">
         <div className="search-container">
-          <span 
-            className="prompt" 
-            onClick={() => navigate(-1)} // El "-1" te lleva a la pantalla anterior
-            style={{ cursor: 'pointer' }}
-          >
-            {'<'}
-          </span>
-          <span className="section-title">
-            FAC: /{tituloFacultad}
-          </span>
+          <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
+          <span className="section-title">FAC: /{tituloFacultad}</span>
         </div>
-        <div className="user-icon">
-          [ USUARIO ]
-        </div>
+        <div className="user-icon">[ USUARIO ]</div>
       </header>
 
-      {/* CENTRO: LA LISTA DE MATERIAS */}
       <main className="main-content-list">
         <div className="full-screen-menu">
-          {materiasFalsas.map((materia, index) => (
-            <div 
-              key={index} 
-              className="full-screen-item"
-              onClick={() => {
-                // 1. Limpiamos el nombre: Minúsculas, sin tildes y con guiones
-                const parametro = materia.toLowerCase()
-                  .normalize("NFD").replace(/[\u0300-\u036f]/g, "") 
-                  .replace(/ /g, '-'); 
-                
-                // 2. Disparamos el viaje a la P3
-                navigate(`/materia/${parametro}`);
-              }}
-            >
-              [ {materia} ]
-            </div>
-          ))}
+          {cargando ? (
+            <div className="full-screen-item">[ ACCEDIENDO AL SISTEMA... ]</div>
+          ) : materias.length > 0 ? (
+            materias.map((m) => (
+              <div 
+                key={m.id} 
+                className="full-screen-item"
+                onClick={() => {
+                  // NAVEGACIÓN POR ID: Esto es lo que la P3 espera
+                  console.log(`Navegando a materia ID: ${m.id} (${m.nombre})`);
+                  navigate(`/materia/${m.id}`);
+                }}
+              >
+                [ {m.nombre.toUpperCase()} ]
+              </div>
+            ))
+          ) : (
+            <div className="full-screen-item">[ SECCIÓN SIN REGISTROS ]</div>
+          )}
         </div>
       </main>
 
-      {/* BARRA INFERIOR */}
       <footer className="bottom-bar">
         <div 
           className="home-icon" 
           style={{ fontSize: '1.5rem', cursor: 'pointer' }}
-          onClick={() => navigate('/')} // Vuelve directo al inicio (P1)
+          onClick={() => navigate('/')}
         >
           [ ⌂ ]
         </div>
       </footer>
-
     </div>
   );
 };
