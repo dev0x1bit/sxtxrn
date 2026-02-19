@@ -1,0 +1,83 @@
+.p3-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.section-title {
+  color: #ffffff;
+  font-family: 'VCR_OSD', monospace;
+  font-size: 1rem;
+}
+
+.main-content-list {
+  flex: 1;
+  overflow-y: auto; /* Scroll habilitado solo acá */
+  padding: 10px 0;
+}
+
+.document-item {
+  padding: 15px 10px;
+  border-bottom: 1px dashed #333;
+  cursor: pointer;
+}
+
+.document-item.active {
+  background-color: #111;
+  border-bottom: none;
+}
+
+.doc-title {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.doc-meta {
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.sub-menu {
+  background-color: #0a0a0a;
+  border-bottom: 1px dashed #333;
+}
+
+.sub-item {
+  padding: 15px 10px 15px 30px;
+  color: #888;
+  border-left: 2px solid #333;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.sub-item:active {
+  background-color: #fff;
+  color: #000;
+}
+
+.bottom-bar {
+  border-top: 2px solid #ffffff;
+  padding: 15px 0;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.home-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Scroll invisible para estética terminal */
+.main-content-list::-webkit-scrollbar { width: 0px; }

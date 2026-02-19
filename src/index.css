@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'VCR_OSD';
+  src: url('./assets/fonts/VCR_OSD_MONO_1.001.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #050505; /* Fondo negro bien profundo */
+  color: #ffffff; /* Texto blanco puro, sin circo */
+  font-family: 'VCR_OSD', monospace; /* Ahora sí, la fuente VHS conectada */
+}

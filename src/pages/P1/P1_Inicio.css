@@ -1,0 +1,132 @@
+/* src/pages/P1/P1_Inicio.css */
+
+.p1-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh; 
+  padding: 15px; 
+  overflow: hidden; 
+}
+
+/* BARRA SUPERIOR */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 10px;
+  gap: 10px; 
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  flex: 1; 
+}
+
+.prompt {
+  margin-right: 10px;
+  font-size: 1.2rem; 
+}
+
+.search-input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: 'VCR_OSD', monospace;
+  font-size: 1rem; 
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #444444;
+}
+
+.user-icon {
+  font-size: 1rem;
+  cursor: pointer;
+  white-space: nowrap; 
+}
+
+/* CONTENIDO CENTRAL (MODO INICIO) */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 10px; 
+}
+
+.main-content h1 {
+  font-size: clamp(1.8rem, 8vw, 3rem); 
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.main-content p {
+  font-size: 0.9rem; 
+  opacity: 0.8;
+}
+
+/* ==== NUEVO: CONTENIDO CENTRAL (MODO LISTA PANTALLA COMPLETA) ==== */
+.main-content-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Estira la lista de lado a lado */
+  overflow-y: auto; /* Agrega scroll exclusivo a esta zona */
+  padding: 10px 0;
+}
+
+.full-screen-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.full-screen-item {
+  padding: 20px 10px; /* Padding bien grande para que sea fácil tocar con el dedo */
+  border-bottom: 1px solid #333333;
+  cursor: pointer;
+  font-size: 1.1rem; 
+  color: #ffffff;
+  transition: background-color 0.2s, color 0.2s;
+  text-align: left; /* Queda más limpio alineado a la izquierda */
+}
+
+/* Efecto flash al tocar */
+.full-screen-item:hover, .full-screen-item:active {
+  background-color: #ffffff;
+  color: #050505; 
+}
+
+.full-screen-item.empty {
+  color: #444444;
+  text-align: center;
+  cursor: default;
+  padding-top: 50px;
+  border: none;
+}
+
+/* Scroll invisible pero funcional para el celu */
+.main-content-list::-webkit-scrollbar {
+  width: 5px;
+}
+.main-content-list::-webkit-scrollbar-track {
+  background: #050505; 
+}
+.main-content-list::-webkit-scrollbar-thumb {
+  background: #ffffff; 
+}
+
+/* BARRA INFERIOR */
+.bottom-bar {
+  border-top: 2px solid #ffffff;
+  padding-top: 10px;
+  padding-bottom: 5px; 
+  text-align: center;
+  font-size: 0.8rem; 
+}

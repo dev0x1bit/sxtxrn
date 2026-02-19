@@ -1,0 +1,274 @@
+/* =============================================
+   ESTRUCTURA GENERAL - P5 DETALLE
+   ============================================= */
+.p5-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  background-color: #050505;
+  color: #ccc;
+  font-family: 'VCR_OSD', monospace;
+}
+
+/* HEADER: POST ORIGINAL (OP) */
+.p5-header {
+  padding: 15px 20px;
+  background-color: #0d0d0d;
+  border-bottom: 2px solid #ffffff;
+  flex-shrink: 0;
+}
+
+.p5-nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-bottom: 12px;
+  color: #666;
+}
+
+.back-btn {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.back-btn:hover {
+  color: #fff;
+}
+
+.op-enunciado {
+  font-size: 1.1rem;
+  color: #fff;
+  line-height: 1.6;
+  padding: 5px 0;
+}
+
+/* BOTÓN GLOBAL (CONTRAER/EXPANDIR TODO) */
+.global-controls {
+  display: flex;
+  justify-content: flex-end; /* Alineado a la derecha */
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #222;
+}
+
+.control-btn {
+  font-size: 0.7rem;
+  color: #888;
+  cursor: pointer;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border: 1px dashed #333;
+  transition: all 0.2s;
+}
+
+.control-btn:hover {
+  color: #fff;
+  border-color: #fff;
+  background-color: #111;
+  text-shadow: 0 0 5px #fff;
+}
+
+/* =============================================
+   HILO DE COMENTARIOS (ESTILO REDDIT)
+   ============================================= */
+.p5-thread {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+.comment-group {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #111;
+}
+
+/* COMENTARIO PADRE (SXTXRN_SYS) */
+.comment-parent {
+  padding: 15px 20px;
+  background-color: #0d0d0d;
+}
+
+.comment-meta {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.author-sys {
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-right: 8px;
+}
+
+.author-user {
+  color: #888;
+  margin-right: 8px;
+}
+
+/* CUERPO Y RENDER MATH */
+.comment-body {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.math-block {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.text-block {
+  color: #bbb;
+  font-size: 0.95rem;
+}
+
+/* FORZAR BLANCO EN LaTeX */
+.math-render .katex {
+  color: #ffffff !important;
+  font-size: 1.1em;
+}
+
+/* ACCIONES Y BOTÓN DE CONTRAER */
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.75rem;
+  color: #555;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.action-link {
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.action-link:hover {
+  color: #fff;
+}
+
+.votes {
+  color: #aaa;
+}
+
+/* EL TRUCO PARA ALINEAR A LA DERECHA */
+.toggle-btn {
+  margin-left: auto; 
+  color: #888;
+  font-weight: bold;
+}
+
+/* =============================================
+   ESTRUCTURA DE HIJOS (INDENTACIÓN)
+   ============================================= */
+.comment-child {
+  display: flex;
+  padding-left: 20px; 
+  margin-top: 2px;
+}
+
+.thread-line {
+  width: 2px;
+  background-color: #222;
+  margin-right: 15px;
+  margin-left: 10px;
+  transition: background-color 0.2s;
+}
+
+.comment-child:hover .thread-line {
+  background-color: #444;
+}
+
+.child-content {
+  flex: 1;
+  padding: 10px 0;
+}
+
+/* =============================================
+   FOOTER / ENTRADA DE TEXTO
+   ============================================= */
+.p5-footer {
+  padding: 15px;
+  background-color: #050505;
+  border-top: 2px solid #ffffff;
+  flex-shrink: 0;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px;
+  background-color: #0d0d0d;
+  border: 1px solid #333;
+  color: #fff;
+  font-family: 'VCR_OSD', monospace;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-wrapper input:focus {
+  border-color: #fff;
+}
+
+/* SCROLLBAR INVISIBLE */
+.p5-thread::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* 1. EL CONTENEDOR PADRE: Prohibido moverse */
+.p5-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh; /* Altura dinámica del viewport */
+  width: 100vw;
+  background-color: #050505;
+  color: #ccc;
+  font-family: 'VCR_OSD', monospace;
+  
+  /* CLAVE: Evita que todo el layout se desplace */
+  overflow: hidden; 
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* 2. EL HEADER: Se queda arriba sí o sí */
+.p5-header {
+  padding: 15px 20px;
+  background-color: #0d0d0d;
+  border-bottom: 2px solid #ffffff;
+  
+  /* CLAVE: No se achica ni se mueve */
+  flex-shrink: 0; 
+  z-index: 10;
+}
+
+/* 3. EL ÁREA DE SCROLL: Solo esto se mueve */
+.p5-thread {
+  flex: 1; /* Ocupa todo el espacio sobrante */
+  overflow-y: auto; /* Permite scroll interno */
+  -webkit-overflow-scrolling: touch; /* Scroll suave en móviles */
+  padding: 10px 0;
+  
+  /* CLAVE: Evita que el contenido empuje al footer */
+  min-height: 0; 
+}
+
+/* 4. EL FOOTER: Se queda abajo clavado */
+.p5-footer {
+  padding: 15px;
+  background-color: #050505;
+  border-top: 2px solid #ffffff;
+  
+  /* CLAVE: No se achica ni se mueve */
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+/* OPCIONAL: Si el input te molesta al scrollear */
+.input-wrapper input {
+  /* ... tu código ... */
+  box-sizing: border-box; /* Evita que el padding ensanche el input */
+}
