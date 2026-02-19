@@ -3,8 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import './P3_Materias.css';
 
-const P3_Materias = () => {
-  const { id } = useParams(); // Recibe el "3" directamente
+const P3_Materias = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
+  const { id } = useParams(); 
   const navigate = useNavigate();
   
   const [carpetaAbierta, setCarpetaAbierta] = useState(null);
@@ -13,7 +13,6 @@ const P3_Materias = () => {
 
   useEffect(() => {
     const fetchContenido = async () => {
-      // Validamos que el ID sea el número que vimos en la captura
       if (!id || isNaN(id)) {
         console.error("ID recibido no es numérico:", id);
         return;
@@ -21,8 +20,6 @@ const P3_Materias = () => {
 
       try {
         setCargando(true);
-
-        // QUERY LIMPIA: Traeme todo de tab_recursos donde materia_id sea 3
         const { data: logs, error } = await supabase
           .from('tab_recursos')
           .select('nombre, categoria')
@@ -31,7 +28,6 @@ const P3_Materias = () => {
         if (error) throw error;
 
         if (logs && logs.length > 0) {
-          // Agrupamos por la columna 'categoria' ("2024 - PARCIALES")
           const agrupado = logs.reduce((acc, curr) => {
             const cat = curr.categoria || "GENERAL";
             if (!acc[cat]) {
@@ -59,6 +55,24 @@ const P3_Materias = () => {
         <div className="search-container">
           <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
           <span className="section-title">DB_ENTRY: /{id}</span>
+        </div>
+
+        {/* ÍCONO DE USUARIO SINCRONIZADO */}
+        <div 
+          className="user-icon" 
+          onClick={() => !session && navigate('/login')} 
+          style={{ cursor: 'pointer' }}
+        >
+          {session ? (
+            <img 
+              src={session.user.user_metadata.avatar_url || session.user.user_metadata.picture} 
+              alt="u" 
+              style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #00ff41' }} 
+              onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=U&background=00ff41&color=000"; }}
+            />
+          ) : (
+            "[ LOGIN ]"
+          )}
         </div>
       </header>
 

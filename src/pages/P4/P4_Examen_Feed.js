@@ -4,8 +4,8 @@ import { supabase } from '../../lib/supabase';
 import LaTeX from 'react-latex-next'; 
 import './P4_Examen_Feed.css';
 
-const P4_Examen_Feed = () => {
-  const { id } = useParams(); // ID del recurso (ej: 14)
+const P4_Examen_Feed = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
+  const { id } = useParams(); 
   const navigate = useNavigate();
   
   const [ejercicios, setEjercicios] = useState([]);
@@ -18,7 +18,6 @@ const P4_Examen_Feed = () => {
         setCargando(true);
         
         let recursoIdFinal = id;
-        // Escudo por si la P3 manda el nombre en vez del ID
         if (isNaN(id)) {
           const { data: rec } = await supabase
             .from('tab_recursos')
@@ -49,13 +48,29 @@ const P4_Examen_Feed = () => {
 
   return (
     <div className="p4-layout">
-      {/* HEADER ORIGINAL */}
       <header className="top-bar">
         <div className="search-container">
           <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
           <span className="section-title">FEED: /{tituloExamen}</span>
         </div>
-        <div className="user-icon">[ USUARIO ]</div>
+
+        {/* ÍCONO DE USUARIO SINCRONIZADO */}
+        <div 
+          className="user-icon" 
+          onClick={() => !session && navigate('/login')} 
+          style={{ cursor: 'pointer' }}
+        >
+          {session ? (
+            <img 
+              src={session.user.user_metadata.avatar_url || session.user.user_metadata.picture} 
+              alt="u" 
+              style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #00ff41' }} 
+              onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=U&background=00ff41&color=000"; }}
+            />
+          ) : (
+            "[ LOGIN ]"
+          )}
+        </div>
       </header>
 
       <main className="main-feed">
@@ -66,7 +81,6 @@ const P4_Examen_Feed = () => {
             ejercicios.map((ej) => (
               <div key={ej.id} className="post-card">
                 
-                {/* ÁREA CLICKEABLE PARA P5 */}
                 <div 
                   className="post-clickable-area" 
                   onClick={() => navigate(`/ejercicio/${ej.id}`)}
@@ -84,7 +98,6 @@ const P4_Examen_Feed = () => {
                   </div>
                 </div>
 
-                {/* BARRA DE ICONOS (SOCIAL) - RESTAURADA */}
                 <div className="post-footer">
                   <div className="footer-left">
                     <div className="stat-group">

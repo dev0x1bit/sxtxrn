@@ -14,30 +14,30 @@ function App() {
   const [session, setSession] = useState(null);
 
   useEffect(() => {
+    // Escuchamos la sesión globalmente
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
     });
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
+
     return () => subscription.unsubscribe();
   }, []);
 
   return (
     <Router>
       <Routes>
-        {/* Ahora todas las rutas son accesibles sin chequear sesión acá */}
-        <Route path="/" element={<P1_Inicio />} />
-        <Route path="/facultad/:id" element={<P2_Facultades />} />
-        <Route path="/materia/:id" element={<P3_Materias />} />
-        <Route path="/visor/:id" element={<P4_Examen_Feed />} />
-        <Route path="/ejercicio/:id" element={<P5_Ejercicio_Detalle />} />
-        
-        {/* La página de login solo se ve si vas a /login */}
+        {/* Le pasamos la 'session' a cada página */}
+        <Route path="/" element={<P1_Inicio session={session} />} />
+        <Route path="/facultad/:id" element={<P2_Facultades session={session} />} />
+        <Route path="/materia/:id" element={<P3_Materias session={session} />} />
+        <Route path="/visor/:id" element={<P4_Examen_Feed session={session} />} />
+        <Route path="/ejercicio/:id" element={<P5_Ejercicio_Detalle session={session} />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
 }
-
 export default App;

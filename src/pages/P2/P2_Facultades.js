@@ -3,49 +3,37 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabase'; 
 import './P2_Facultades.css';
 
-const P2_Facultades = () => {
+const P2_Facultades = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
   const { id } = useParams(); 
   const navigate = useNavigate();
-  
   const [materias, setMaterias] = useState([]);
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
     const traerMateriasReal = async () => {
       if (!id) return;
-
       try {
         setCargando(true);
-
-        // 1. Buscamos la facultad por nombre (slug)
-        const { data: facu, error: errorFacu } = await supabase
+        const { data: facu } = await supabase
           .from('tab_facultades')
           .select('id')
           .ilike('nombre', id.replace(/-/g, ' '))
           .single();
 
-        if (errorFacu) throw errorFacu;
-
         if (facu) {
-          // 2. IMPORTANTE: Traemos el ID y el NOMBRE de la materia
-          const { data: mats, error: errorMats } = await supabase
+          const { data: mats } = await supabase
             .from('tab_materias')
-            .select('id, nombre') // <-- Traemos el ID para la navegación
+            .select('id, nombre')
             .eq('facultad_id', facu.id)
             .order('nombre', { ascending: true });
-
-          if (errorMats) throw errorMats;
-          
-          // Guardamos el objeto completo (id y nombre)
           setMaterias(mats);
         }
       } catch (err) {
-        console.error("Error en el búnker P2:", err.message);
+        console.error("Error:", err.message);
       } finally {
         setCargando(false);
       }
     };
-
     traerMateriasReal();
   }, [id]);
 
@@ -58,41 +46,36 @@ const P2_Facultades = () => {
           <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
           <span className="section-title">FAC: /{tituloFacultad}</span>
         </div>
-        <div className="user-icon">[ USUARIO ]</div>
+        
+        {/* ÍCONO DE USUARIO SINCRONIZADO */}
+        <div className="user-icon" onClick={() => !session && navigate('/login')} style={{ cursor: 'pointer' }}>
+          {session ? (
+            <img 
+              src={session.user.user_metadata.avatar_url || session.user.user_metadata.picture} 
+              alt="u" 
+              style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #00ff41' }} 
+              onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=U&background=00ff41&color=000"; }}
+            />
+          ) : (
+            "[ LOGIN ]"
+          )}
+        </div>
       </header>
 
       <main className="main-content-list">
         <div className="full-screen-menu">
           {cargando ? (
             <div className="full-screen-item">[ ACCEDIENDO AL SISTEMA... ]</div>
-          ) : materias.length > 0 ? (
-            materias.map((m) => (
-              <div 
-                key={m.id} 
-                className="full-screen-item"
-                onClick={() => {
-                  // NAVEGACIÓN POR ID: Esto es lo que la P3 espera
-                  console.log(`Navegando a materia ID: ${m.id} (${m.nombre})`);
-                  navigate(`/materia/${m.id}`);
-                }}
-              >
-                [ {m.nombre.toUpperCase()} ]
-              </div>
-            ))
-          ) : (
-            <div className="full-screen-item">[ SECCIÓN SIN REGISTROS ]</div>
-          )}
+          ) : materias.map((m) => (
+            <div key={m.id} className="full-screen-item" onClick={() => navigate(`/materia/${m.id}`)}>
+              [ {m.nombre.toUpperCase()} ]
+            </div>
+          ))}
         </div>
       </main>
 
       <footer className="bottom-bar">
-        <div 
-          className="home-icon" 
-          style={{ fontSize: '1.5rem', cursor: 'pointer' }}
-          onClick={() => navigate('/')}
-        >
-          [ ⌂ ]
-        </div>
+        <div className="home-icon" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}> [ ⌂ ] </div>
       </footer>
     </div>
   );

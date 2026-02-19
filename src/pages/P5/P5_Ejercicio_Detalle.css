@@ -272,3 +272,17 @@
   /* ... tu código ... */
   box-sizing: border-box; /* Evita que el padding ensanche el input */
 }
+
+/* Voto Positivo Activo (Verde Búnker) */
+.v-up.active {
+    color: #00ff41;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ff41;
+}
+
+/* Voto Negativo Activo (Rojo Error) */
+.v-down.active {
+    color: #ff003c; 
+    font-weight: bold;
+    text-shadow: 0 0 5px #ff003c;
+}
