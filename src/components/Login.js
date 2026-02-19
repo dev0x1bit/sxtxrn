@@ -2,21 +2,24 @@ import React from 'react';
 import { supabase } from '../lib/supabase';
 
 const Login = () => {
-  const entrarConGoogle = async () => {
+    const entrarConGoogle = async () => {
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
+        // Detectamos si estamos en producción (Vercel) o local
+        const urlRedireccion = window.location.origin;
+
+        const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          // Asegura que vuelva a la URL base de tu proyecto
-          redirectTo: window.location.origin 
+            // Ahora, si estás en el celu, vuelve al link de Vercel
+            // Y si estás en la PC, vuelve a localhost
+            redirectTo: urlRedireccion 
         }
-      });
-      if (error) throw error;
+        });
+        if (error) throw error;
     } catch (error) {
-      console.error("Error de acceso:", error.message);
-      alert("No se pudo conectar con el núcleo de Google.");
+        console.error("Error de acceso:", error.message);
     }
-  };
+    };
 
   return (
     <div style={styles.container}>
