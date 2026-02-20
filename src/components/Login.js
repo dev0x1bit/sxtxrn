@@ -24,7 +24,7 @@ const Login = () => {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <div style={styles.logo}>[ SXTXRN_SYS ]</div>
+        <div style={styles.logo}>[ SATXRN ]</div>
         <h2 style={styles.subtitle}>NÚCLEO DE RESOLUCIONES</h2>
         <p style={styles.description}>
           Identificate para acceder a los parciales, votar soluciones y participar en el hilo.
@@ -70,7 +70,7 @@ const styles = {
     fontSize: '2rem',
     fontWeight: 'bold',
     letterSpacing: '4px',
-    color: '#00ff41', // Verde terminal
+    color: '#e9e9e9', // Verde terminal
     marginBottom: '10px'
   },
   subtitle: {
