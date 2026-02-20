@@ -162,3 +162,17 @@
 
 /* Scroll invisible */
 .main-feed::-webkit-scrollbar { width: 0px; }
+
+/* FLECHA ARRIBA PREDOMINANTE (VERDE) */
+.score-up .stat-icon, 
+.score-up .stat-value {
+  color: #00ff41 !important;
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+}
+
+/* FLECHA ABAJO PREDOMINANTE (ROJA) */
+.score-down .stat-icon, 
+.score-down .stat-value {
+  color: #ff003c !important;
+  text-shadow: 0 0 5px rgba(255, 0, 60, 0.5);
+}

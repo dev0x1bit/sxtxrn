@@ -1,0 +1,138 @@
+/* --- DRAWER DE RESPUESTAS ESTILO FULL SCREEN MONOCROMO (BLANCO PURO) --- */
+
+.reply-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background-color: #050505;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+}
+
+.reply-drawer.open {
+    transform: translateY(0);
+}
+
+/* HEADER Y BOTÓN CERRAR */
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #1a1a1a;
+    font-family: monospace;
+    color: #ffffff; /* BLANCO PURO */
+    flex-shrink: 0;
+}
+
+.drawer-close {
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff; /* BLANCO PURO */
+    padding: 5px;
+    transition: all 0.2s;
+}
+
+.drawer-close:hover {
+    text-shadow: 0 0 8px #ffffff;
+}
+
+/* CONTEXTO (LO QUE ESTÁS CITANDO) */
+.drawer-context {
+    padding: 20px;
+    font-size: 0.95rem;
+    color: #aaa;
+    background-color: #0a0a0a;
+    border-bottom: 1px solid #1a1a1a;
+    max-height: 40vh; 
+    overflow-y: auto;
+    flex-shrink: 0; 
+}
+
+.drawer-context::-webkit-scrollbar {
+    width: 4px;
+}
+.drawer-context::-webkit-scrollbar-thumb {
+    background-color: #333;
+}
+
+/* ÁREA DE TEXTO (DONDE ESCRIBÍS) */
+.drawer-input-area {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer-input-area textarea {
+    width: 100%;
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #ffffff; /* EL TEXTO QUE ESCRIBÍS EN BLANCO PURO */
+    font-family: monospace;
+    font-size: 1.1rem;
+    resize: none;
+    outline: none;
+    line-height: 1.5;
+}
+
+.drawer-input-area textarea::placeholder {
+    color: #444;
+}
+
+/* FOOTER Y CONTADOR */
+.drawer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-top: 1px solid #1a1a1a;
+    flex-shrink: 0;
+}
+
+.char-counter {
+    font-family: monospace;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.char-counter.maxed {
+    color: #ffffff; /* BLANCO PURO AL LLEGAR AL LÍMITE */
+    font-weight: bold;
+    animation: blink 1s infinite;
+}
+
+/* --- BOTÓN TRANSMITIR (BLANCO NUCLEAR 100% SIEMPRE) --- */
+.submit-reply-btn {
+    background: transparent;
+    border: 1px solid #ffffff; /* BLANCO PURO */
+    color: #ffffff; /* BLANCO PURO */
+    font-family: monospace;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.submit-reply-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px #ffffff;
+}
+
+.submit-reply-btn:disabled {
+    border-color: #ffffff; /* BLANCO PURO */
+    color: #ffffff; /* BLANCO PURO */
+    opacity: 1; /* CERO TRANSPARENCIA, 100% VISIBLE */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}

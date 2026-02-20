@@ -1,21 +1,30 @@
 /* =============================================
    ESTRUCTURA GENERAL - P5 DETALLE
    ============================================= */
+* {
+  box-sizing: border-box;
+}
+
 .p5-layout {
   display: flex;
   flex-direction: column;
   height: 100dvh;
+  width: 100vw;
   background-color: #050505;
   color: #ccc;
   font-family: 'VCR_OSD', monospace;
+  overflow: hidden; 
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-/* HEADER: POST ORIGINAL (OP) */
 .p5-header {
   padding: 15px 20px;
   background-color: #0d0d0d;
   border-bottom: 2px solid #ffffff;
-  flex-shrink: 0;
+  flex-shrink: 0; 
+  z-index: 10;
 }
 
 .p5-nav {
@@ -26,26 +35,15 @@
   color: #666;
 }
 
-.back-btn {
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.back-btn:hover {
-  color: #fff;
-}
-
 .op-enunciado {
   font-size: 1.1rem;
   color: #fff;
   line-height: 1.6;
-  padding: 5px 0;
 }
 
-/* BOTÓN GLOBAL (CONTRAER/EXPANDIR TODO) */
 .global-controls {
   display: flex;
-  justify-content: flex-end; /* Alineado a la derecha */
+  justify-content: flex-end;
   margin-top: 15px;
   padding-top: 10px;
   border-top: 1px solid #222;
@@ -55,234 +53,118 @@
   font-size: 0.7rem;
   color: #888;
   cursor: pointer;
-  letter-spacing: 1px;
   padding: 4px 10px;
   border: 1px dashed #333;
-  transition: all 0.2s;
-}
-
-.control-btn:hover {
-  color: #fff;
-  border-color: #fff;
-  background-color: #111;
-  text-shadow: 0 0 5px #fff;
 }
 
 /* =============================================
-   HILO DE COMENTARIOS (ESTILO REDDIT)
+   HILO DE COMENTARIOS
    ============================================= */
 .p5-thread {
-  flex: 1;
-  overflow-y: auto;
+  flex: 1; 
+  overflow-y: auto; 
+  overflow-x: hidden;
   padding: 10px 0;
 }
 
 .comment-group {
   margin-bottom: 20px;
   border-bottom: 1px solid #111;
+  position: relative; /* CLAVE para el alineado absoluto */
 }
 
-/* COMENTARIO PADRE (SXTXRN_SYS) */
+.comment-parent, .comment-child {
+  position: relative; /* CLAVE: Cada fila es un universo para el botón */
+}
+
 .comment-parent {
   padding: 15px 20px;
   background-color: #0d0d0d;
 }
 
 .comment-meta {
-  display: flex;
-  align-items: center;
   font-size: 0.8rem;
   margin-bottom: 8px;
 }
 
-.author-sys {
-  color: #fff;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-right: 8px;
-}
-
-.author-user {
-  color: #888;
-  margin-right: 8px;
-}
-
-/* CUERPO Y RENDER MATH */
 .comment-body {
   margin: 10px 0;
   line-height: 1.6;
+  padding-right: 80px; /* Dejamos espacio para que el texto no pise al botón "Ver/Ocultar" */
 }
 
-.math-block {
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.text-block {
-  color: #bbb;
-  font-size: 0.95rem;
-}
-
-/* FORZAR BLANCO EN LaTeX */
 .math-render .katex {
   color: #ffffff !important;
-  font-size: 1.1em;
 }
 
-/* ACCIONES Y BOTÓN DE CONTRAER */
+/* ACCIONES */
 .comment-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   font-size: 0.75rem;
   color: #555;
   margin-top: 12px;
-  width: 100%;
+  min-height: 20px;
 }
 
 .action-link {
   cursor: pointer;
   text-transform: uppercase;
-  transition: color 0.2s;
 }
 
-.action-link:hover {
-  color: #fff;
-}
-
-.votes {
-  color: #aaa;
-}
-
-/* EL TRUCO PARA ALINEAR A LA DERECHA */
+/* --- EL ARREGLO DEFINITIVO PARA EL BOTÓN --- */
 .toggle-btn {
-  margin-left: auto; 
+  position: absolute; /* Se sale del flujo y se clava donde le digamos */
+  right: 20px;        /* A 20px del borde derecho SIEMPRE */
   color: #888;
   font-weight: bold;
+  background: #050505; /* Fondo negro para que no se trasluzca nada */
+  padding-left: 5px;
 }
 
-/* =============================================
-   ESTRUCTURA DE HIJOS (INDENTACIÓN)
-   ============================================= */
+/* INDENTACIÓN */
 .comment-child {
   display: flex;
-  padding-left: 20px; 
+  padding-left: 15px; 
   margin-top: 2px;
+  width: 100%;
 }
 
 .thread-line {
   width: 2px;
   background-color: #222;
-  margin-right: 15px;
-  margin-left: 10px;
-  transition: background-color 0.2s;
-}
-
-.comment-child:hover .thread-line {
-  background-color: #444;
+  margin-right: 12px;
+  margin-left: 8px;
+  flex-shrink: 0;
 }
 
 .child-content {
   flex: 1;
   padding: 10px 0;
+  min-width: 0;
 }
 
-/* =============================================
-   FOOTER / ENTRADA DE TEXTO
-   ============================================= */
-.p5-footer {
-  padding: 15px;
-  background-color: #050505;
-  border-top: 2px solid #ffffff;
-  flex-shrink: 0;
-}
+/* VOTOS */
+.v-up.active { color: #00ff41; text-shadow: 0 0 5px #00ff41; }
+.v-down.active { color: #ff003c; text-shadow: 0 0 5px #ff003c; }
 
-.input-wrapper input {
-  width: 100%;
-  padding: 12px;
-  background-color: #0d0d0d;
-  border: 1px solid #333;
-  color: #fff;
-  font-family: 'VCR_OSD', monospace;
-  outline: none;
-  transition: border-color 0.2s;
-}
 
-.input-wrapper input:focus {
-  border-color: #fff;
-}
-
-/* SCROLLBAR INVISIBLE */
-.p5-thread::-webkit-scrollbar {
-  width: 0px;
-}
-
-/* 1. EL CONTENEDOR PADRE: Prohibido moverse */
-.p5-layout {
+.msg-counter {
   display: flex;
-  flex-direction: column;
-  height: 100dvh; /* Altura dinámica del viewport */
-  width: 100vw;
-  background-color: #050505;
-  color: #ccc;
-  font-family: 'VCR_OSD', monospace;
-  
-  /* CLAVE: Evita que todo el layout se desplace */
-  overflow: hidden; 
-  position: fixed;
-  top: 0;
-  left: 0;
+  align-items: center;
+  gap: 6px;
+  color: #888;
+  font-size: 0.75rem;
+  font-family: monospace;
 }
 
-/* 2. EL HEADER: Se queda arriba sí o sí */
-.p5-header {
-  padding: 15px 20px;
-  background-color: #0d0d0d;
-  border-bottom: 2px solid #ffffff;
-  
-  /* CLAVE: No se achica ni se mueve */
-  flex-shrink: 0; 
-  z-index: 10;
+.msg-icon {
+  font-size: 0.85rem;
+  filter: grayscale(1) brightness(1.5); /* Para que la nube no tenga colores emoji y pegue con el diseño */
 }
 
-/* 3. EL ÁREA DE SCROLL: Solo esto se mueve */
-.p5-thread {
-  flex: 1; /* Ocupa todo el espacio sobrante */
-  overflow-y: auto; /* Permite scroll interno */
-  -webkit-overflow-scrolling: touch; /* Scroll suave en móviles */
-  padding: 10px 0;
-  
-  /* CLAVE: Evita que el contenido empuje al footer */
-  min-height: 0; 
-}
-
-/* 4. EL FOOTER: Se queda abajo clavado */
-.p5-footer {
-  padding: 15px;
-  background-color: #050505;
-  border-top: 2px solid #ffffff;
-  
-  /* CLAVE: No se achica ni se mueve */
-  flex-shrink: 0;
-  z-index: 10;
-}
-
-/* OPCIONAL: Si el input te molesta al scrollear */
-.input-wrapper input {
-  /* ... tu código ... */
-  box-sizing: border-box; /* Evita que el padding ensanche el input */
-}
-
-/* Voto Positivo Activo (Verde Búnker) */
-.v-up.active {
-    color: #00ff41;
-    font-weight: bold;
-    text-shadow: 0 0 5px #00ff41;
-}
-
-/* Voto Negativo Activo (Rojo Error) */
-.v-down.active {
-    color: #ff003c; 
-    font-weight: bold;
-    text-shadow: 0 0 5px #ff003c;
+/* Espaciado extra para que no se pegue al botón responder */
+.action-link {
+  margin-left: 5px;
 }
