@@ -107,7 +107,7 @@ const P1_Inicio = () => {
           </div>
         ) : (
           <>
-            <h1>SXTXRN</h1>
+            <h1>SATXRN</h1>
             <p>... SITIO EN CONSTRUCCION ...</p>
             <p></p>
             <p>... PARCIALES ...</p>
