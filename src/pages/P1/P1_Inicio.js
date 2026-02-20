@@ -107,8 +107,12 @@ const P1_Inicio = () => {
           </div>
         ) : (
           <>
-            <h1>SXTXRN_V1</h1>
-            <p>SISTEMA EN LÍNEA. ESPERANDO COMANDO...</p>
+            <h1>SXTXRN</h1>
+            <p>... SITIO EN CONSTRUCCION ...</p>
+            <p></p>
+            <p>... PARCIALES ...</p>
+            <p>... EJERCICIOS RESUELTOS ...</p>
+            <p>... CBC UBA ...</p>
           </>
         )}
       </main>
