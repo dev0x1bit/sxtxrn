@@ -20,11 +20,13 @@
 }
 
 .p5-header {
-  padding: 15px 20px;
+  padding: 15px 20px 5px 20px; /* Ajustamos padding inferior */
   background-color: #0d0d0d;
   border-bottom: 2px solid #ffffff;
   flex-shrink: 0; 
   z-index: 10;
+  display: flex;
+  flex-direction: column;
 }
 
 .p5-nav {
@@ -35,19 +37,47 @@
   color: #666;
 }
 
+/* --- REGIÓN REDIMENSIONABLE DEL ENUNCIADO --- */
 .op-enunciado {
   font-size: 1.1rem;
   color: #fff;
-  /* Aumentado para que el enunciado respire */
-  line-height: 2; 
+  line-height: 1.6;
+  
+  /* MAGIA AQUÍ: */
+  max-height: 33vh;      /* Máximo 33% de la pantalla */
+  min-height: 80px;      /* Altura mínima para que no desaparezca */
+  overflow-y: auto;      /* Scroll vertical si el texto es largo */
+  resize: vertical;      /* Permite estirar/achicar con el mouse */
+  
+  padding-bottom: 15px;  /* Espacio para el tirador del resize */
+  border: 1px solid transparent;
+  transition: border 0.3s;
+}
+
+/* Estilo para el tirador del resize (el triangulito del mouse) */
+.op-enunciado::-webkit-resizer {
+  background-color: #333;
+  border: 5px solid #0d0d0d;
+  outline: 1px solid #fff;
+}
+
+.op-enunciado:hover {
+  border-bottom: 1px dashed #222; /* Feedback visual al pasar el mouse */
+}
+
+/* Custom Scrollbar para el enunciado (Estilo Retro) */
+.op-enunciado::-webkit-scrollbar {
+  width: 4px;
+}
+.op-enunciado::-webkit-scrollbar-thumb {
+  background: #444;
 }
 
 .global-controls {
   display: flex;
   justify-content: flex-end;
-  margin-top: 15px;
-  padding-top: 10px;
-  border-top: 1px solid #222;
+  margin-top: 10px;
+  padding-top: 5px;
 }
 
 .control-btn {
@@ -67,6 +97,8 @@
   overflow-x: hidden;
   padding: 10px 0;
 }
+
+/* ... (El resto del código de los comentarios se mantiene igual) */
 
 .comment-group {
   margin-bottom: 20px;
@@ -90,12 +122,10 @@
 
 .comment-body {
   margin: 10px 0;
-  /* INTERLINEADO AUMENTADO AQUÍ */
-  line-height: 2; 
+  line-height: 1.8; 
   padding-right: 80px; 
 }
 
-/* Espaciado entre bloques de matemática y texto dentro del cuerpo */
 .math-block, .text-block {
   margin-bottom: 15px;
   display: block;
@@ -105,7 +135,6 @@
   color: #ffffff !important;
 }
 
-/* ACCIONES */
 .comment-actions {
   display: flex;
   align-items: center;
@@ -119,9 +148,9 @@
 .action-link {
   cursor: pointer;
   text-transform: uppercase;
+  margin-left: 5px;
 }
 
-/* --- BOTÓN VER/OCULTAR --- */
 .toggle-btn {
   position: absolute; 
   right: 20px;        
@@ -131,7 +160,6 @@
   padding-left: 5px;
 }
 
-/* INDENTACIÓN */
 .comment-child {
   display: flex;
   padding-left: 15px; 
@@ -153,10 +181,8 @@
   min-width: 0;
 }
 
-/* VOTOS */
 .v-up.active { color: #00ff41; text-shadow: 0 0 5px #00ff41; }
 .v-down.active { color: #ff003c; text-shadow: 0 0 5px #ff003c; }
-
 
 .msg-counter {
   display: flex;
@@ -170,9 +196,4 @@
 .msg-icon {
   font-size: 0.85rem;
   filter: grayscale(1) brightness(1.5); 
-}
-
-/* Espaciado extra para que no se pegue al botón responder */
-.action-link {
-  margin-left: 5px;
 }
