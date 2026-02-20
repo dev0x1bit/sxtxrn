@@ -38,7 +38,8 @@
 .op-enunciado {
   font-size: 1.1rem;
   color: #fff;
-  line-height: 1.6;
+  /* Aumentado para que el enunciado respire */
+  line-height: 2; 
 }
 
 .global-controls {
@@ -70,11 +71,11 @@
 .comment-group {
   margin-bottom: 20px;
   border-bottom: 1px solid #111;
-  position: relative; /* CLAVE para el alineado absoluto */
+  position: relative; 
 }
 
 .comment-parent, .comment-child {
-  position: relative; /* CLAVE: Cada fila es un universo para el botón */
+  position: relative; 
 }
 
 .comment-parent {
@@ -89,8 +90,15 @@
 
 .comment-body {
   margin: 10px 0;
-  line-height: 1.6;
-  padding-right: 80px; /* Dejamos espacio para que el texto no pise al botón "Ver/Ocultar" */
+  /* INTERLINEADO AUMENTADO AQUÍ */
+  line-height: 2; 
+  padding-right: 80px; 
+}
+
+/* Espaciado entre bloques de matemática y texto dentro del cuerpo */
+.math-block, .text-block {
+  margin-bottom: 15px;
+  display: block;
 }
 
 .math-render .katex {
@@ -113,13 +121,13 @@
   text-transform: uppercase;
 }
 
-/* --- EL ARREGLO DEFINITIVO PARA EL BOTÓN --- */
+/* --- BOTÓN VER/OCULTAR --- */
 .toggle-btn {
-  position: absolute; /* Se sale del flujo y se clava donde le digamos */
-  right: 20px;        /* A 20px del borde derecho SIEMPRE */
+  position: absolute; 
+  right: 20px;        
   color: #888;
   font-weight: bold;
-  background: #050505; /* Fondo negro para que no se trasluzca nada */
+  background: #050505; 
   padding-left: 5px;
 }
 
@@ -161,7 +169,7 @@
 
 .msg-icon {
   font-size: 0.85rem;
-  filter: grayscale(1) brightness(1.5); /* Para que la nube no tenga colores emoji y pegue con el diseño */
+  filter: grayscale(1) brightness(1.5); 
 }
 
 /* Espaciado extra para que no se pegue al botón responder */

@@ -23,7 +23,8 @@ const P3_Materias = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
         const { data: logs, error } = await supabase
           .from('tab_recursos')
           .select('nombre, categoria')
-          .eq('materia_id', parseInt(id)); 
+          .eq('materia_id', parseInt(id))
+          .order('id', { ascending: true }); // <--- ACÁ ESTÁ LA MAGIA
 
         if (error) throw error;
 

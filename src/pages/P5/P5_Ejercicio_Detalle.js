@@ -13,11 +13,11 @@ const P5_Ejercicio_Detalle = ({ session }) => {
   const [hilo, setHilo] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [childrenHidden, setChildrenHidden] = useState({});
-  const [isAllCollapsed, setIsAllCollapsed] = useState(false);
+  const [isAllCollapsed, setIsAllCollapsed] = useState(true); // Arrancamos asumiendo que todo está cerrado
   const [votosUsuario, setVotosUsuario] = useState({}); 
   const [replyTarget, setReplyTarget] = useState(null); 
 
-  // --- LÓGICA DE VOTOS BLINDADA ---
+  // --- VOTOS BLINDADOS ---
   const handleVote = async (idDestino, tipoEntidad, type) => {
     if (!session) return alert("Debes entrar al búnker.");
     const userId = session.user.id;
@@ -71,10 +71,27 @@ const P5_Ejercicio_Detalle = ({ session }) => {
         const { data: ej } = await supabase.from('tab_ejercicios').select('enunciado').eq('id', id).single();
         setEjercicio(ej);
         const { data: res } = await supabase.from('tab_resoluciones').select('*').eq('ejercicio_id', id).order('orden', { ascending: true });
+        
         if (res) {
           const ids = res.map(r => r.id);
           const { data: coms } = await supabase.from('tab_comentarios').select('*').in('resolucion_id', ids);
-          setHilo(res.map(r => ({ ...r, tab_comentarios: coms ? coms.filter(c => Number(c.resolucion_id) === Number(r.id)) : [] })));
+          
+          const finalHilo = res.map(r => ({ 
+            ...r, 
+            tab_comentarios: coms ? coms.filter(c => Number(c.resolucion_id) === Number(r.id)) : [] 
+          }));
+          
+          setHilo(finalHilo);
+
+          // 🚀 MAGIA: INICIALIZAR TODO COLAPSADO
+          // Solo metemos las resoluciones (los padres) en el estado de "ocultos"
+          const initialState = {};
+          finalHilo.forEach(r => {
+            initialState[`res_${r.id}`] = true;
+          });
+          setChildrenHidden(initialState);
+          setIsAllCollapsed(true);
+
           if (session) {
             const { data: v } = await supabase.from('tab_votos').select('*').eq('user_id', session.user.id);
             const mapa = {};
@@ -90,18 +107,15 @@ const P5_Ejercicio_Detalle = ({ session }) => {
     fetchFullDetalle();
   }, [id, session]);
 
-  // --- BOTÓN GLOBAL RECUPERADO ---
+  // --- LOGICA DE EXPANDIR/CONTRAER ---
   const handleGlobalToggle = () => {
     if (isAllCollapsed) {
-      setChildrenHidden({});
+      setChildrenHidden({}); // Al vaciarlo, todo se expande
       setIsAllCollapsed(false);
     } else {
       const allIds = {};
       hilo.forEach(res => {
         allIds[`res_${res.id}`] = true;
-        res.tab_comentarios?.forEach(com => {
-          allIds[`com_${com.id}`] = true;
-        });
       });
       setChildrenHidden(allIds);
       setIsAllCollapsed(true);
@@ -115,6 +129,8 @@ const P5_Ejercicio_Detalle = ({ session }) => {
   const renderTree = (list, pid, resId) => {
     const hijos = list.filter(c => Number(c.parent_id) === Number(pid));
     return hijos.map(com => {
+      // Como no metemos los comentarios en childrenHidden al inicio,
+      // isHidden será undefined (false), por lo tanto se verán siempre.
       const isHidden = childrenHidden[`com_${com.id}`];
       const totalHijos = countDescendants(list, com.id);
       const userVote = votosUsuario[`comentario_${com.id}`];
@@ -131,6 +147,8 @@ const P5_Ejercicio_Detalle = ({ session }) => {
               </span>
               <span className="msg-counter"><span className="msg-icon">💬</span> {totalHijos}</span>
               <span className="action-link" onClick={() => setReplyTarget({ id: com.id, tipo: 'comentario', autor: 'User', texto: com.contenido_latex, resolucionId: resId })}>Responder</span>
+              
+              {/* Solo mostramos el botón de ocultar si queremos contraer una rama específica */}
               {totalHijos > 0 && (
                 <span className="action-link toggle-btn" onClick={() => setChildrenHidden(p => ({...p, [`com_${com.id}`]: !p[`com_${com.id}`]}))}>
                   {isHidden ? `[ + ] Ver ${totalHijos}` : '[ - ] Ocultar'}
@@ -164,7 +182,6 @@ const P5_Ejercicio_Detalle = ({ session }) => {
       <header className="p5-header">
         <div className="p5-nav"><span onClick={() => navigate(-1)} style={{cursor:'pointer'}}>{'<'} VOLVER</span><div>{session ? "U" : "LOGIN"}</div></div>
         <div className="op-enunciado math-render"><LaTeX>{ejercicio?.enunciado || ''}</LaTeX></div>
-        {/* BOTÓN REINSTALADO AQUÍ */}
         <div className="global-controls">
           <span className="control-btn" onClick={handleGlobalToggle}>
             {isAllCollapsed ? '[ EXPANDIR TODO ]' : '[ CONTRAER TODO ]'}
@@ -198,6 +215,7 @@ const P5_Ejercicio_Detalle = ({ session }) => {
                   )}
                 </div>
               </div>
+              {/* Si abrimos la resolución, renderTree mostrará todo porque los hijos no están en childrenHidden */}
               {!isHidden && renderTree(res.tab_comentarios || [], null, res.id)}
             </div>
           );
