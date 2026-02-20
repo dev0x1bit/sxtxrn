@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabase';
 import './P3_Materias.css';
 
-const P3_Materias = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
+const P3_Materias = ({ session }) => {
   const { id } = useParams(); 
   const navigate = useNavigate();
   
@@ -20,11 +20,12 @@ const P3_Materias = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
 
       try {
         setCargando(true);
+        // FIX 1: Incluimos el 'id' en el select para poder navegar correctamente
         const { data: logs, error } = await supabase
           .from('tab_recursos')
-          .select('nombre, categoria')
+          .select('id, nombre, categoria') 
           .eq('materia_id', parseInt(id))
-          .order('id', { ascending: true }); // <--- ACÁ ESTÁ LA MAGIA
+          .order('id', { ascending: true });
 
         if (error) throw error;
 
@@ -34,7 +35,8 @@ const P3_Materias = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
             if (!acc[cat]) {
               acc[cat] = { titulo: cat, archivos: [] };
             }
-            acc[cat].archivos.push(curr.nombre);
+            // FIX 2: Guardamos el objeto completo (id y nombre) en lugar de solo el string
+            acc[cat].archivos.push({ id: curr.id, nombre: curr.nombre });
             return acc;
           }, {});
 
@@ -58,7 +60,6 @@ const P3_Materias = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
           <span className="section-title">DB_ENTRY: /{id}</span>
         </div>
 
-        {/* ÍCONO DE USUARIO SINCRONIZADO */}
         <div 
           className="user-icon" 
           onClick={() => !session && navigate('/login')} 
@@ -103,11 +104,12 @@ const P3_Materias = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
                           key={i} 
                           className="sub-item"
                           onClick={() => {
-                            const slug = archivo.toLowerCase().replace(/ /g, '-');
-                            navigate(`/visor/${slug}`);
+                            // FIX 3: Navegamos usando el ID numérico real
+                            // Esto garantiza que la P4 reciba el recurso_id correcto
+                            navigate(`/visor/${archivo.id}`); 
                           }}
                         >
-                          - {archivo.toUpperCase()}
+                          - {archivo.nombre.toUpperCase()}
                         </div>
                       ))}
                     </div>
