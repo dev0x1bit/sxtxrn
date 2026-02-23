@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'; //
 import { supabase } from '../../lib/supabase'; 
 import './P2_Facultades.css';
 
-const P2_Facultades = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
+const P2_Facultades = ({ session }) => {
   const { id } = useParams(); 
   const navigate = useNavigate();
   const [materias, setMaterias] = useState([]);
@@ -14,6 +15,7 @@ const P2_Facultades = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
       if (!id) return;
       try {
         setCargando(true);
+        // Usamos ilike para que sea insensible a mayúsculas/acentos al buscar
         const { data: facu } = await supabase
           .from('tab_facultades')
           .select('id')
@@ -41,13 +43,22 @@ const P2_Facultades = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
 
   return (
     <div className="p2-layout">
+      {/* 🚀 SEO DINÁMICO: Cambia según la facultad (ej. CBC, Ingeniería, etc.) */}
+      <Helmet>
+        <title>{`Materias de ${tituloFacultad} | SXTXRN`}</title>
+        <meta 
+          name="description" 
+          content={`Explorá las materias de ${tituloFacultad} en el búnker de SXTXRN. Encontrá ejercicios resueltos de Análisis Matemático, Álgebra, Química y más.`} 
+        />
+        <link rel="canonical" href={`https://satxrn.com.ar/facultad/${id}`} />
+      </Helmet>
+
       <header className="top-bar">
         <div className="search-container">
           <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
           <span className="section-title">FAC: /{tituloFacultad}</span>
         </div>
         
-        {/* ÍCONO DE USUARIO SINCRONIZADO */}
         <div className="user-icon" onClick={() => !session && navigate('/login')} style={{ cursor: 'pointer' }}>
           {session ? (
             <img 
@@ -67,7 +78,11 @@ const P2_Facultades = ({ session }) => { // <-- RECIBE LA SESIÓN AQUÍ
           {cargando ? (
             <div className="full-screen-item">[ ACCEDIENDO AL SISTEMA... ]</div>
           ) : materias.map((m) => (
-            <div key={m.id} className="full-screen-item" onClick={() => navigate(`/materia/${m.id}`)}>
+            <div 
+              key={m.id} 
+              className="full-screen-item" 
+              onClick={() => navigate(`/materia/${m.id}`)}
+            >
               [ {m.nombre.toUpperCase()} ]
             </div>
           ))}

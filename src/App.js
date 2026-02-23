@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { supabase } from './lib/supabase'; // Importante tener tu cliente de supabase
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async'; //
+import { supabase } from './lib/supabase'; //
 import Login from './components/Login';
 
 // Importamos todas las páginas de nuestro flujo SXTXRN
@@ -14,7 +15,6 @@ function App() {
   const [session, setSession] = useState(null);
 
   useEffect(() => {
-    // Escuchamos la sesión globalmente
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
     });
@@ -27,17 +27,24 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Routes>
-        {/* Le pasamos la 'session' a cada página */}
-        <Route path="/" element={<P1_Inicio session={session} />} />
-        <Route path="/facultad/:id" element={<P2_Facultades session={session} />} />
-        <Route path="/materia/:id" element={<P3_Materias session={session} />} />
-        <Route path="/visor/:id" element={<P4_Examen_Feed session={session} />} />
-        <Route path="/ejercicio/:id" element={<P5_Ejercicio_Detalle session={session} />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </Router>
+    <HelmetProvider> {/* 👈 Este es el motor que permite cambiar los títulos dinámicamente */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<P1_Inicio session={session} />} />
+          <Route path="/facultad/:id" element={<P2_Facultades session={session} />} />
+          <Route path="/materia/:id" element={<P3_Materias session={session} />} />
+          <Route path="/visor/:id" element={<P4_Examen_Feed session={session} />} />
+          
+          {/* IMPORTANTE: Si en el Sitemap usamos URLs como /ejercicio/cbc-analisis-limites-21,
+            el ":id" ahora va a recibir todo ese texto largo (el slug).
+          */}
+          <Route path="/ejercicio/:id" element={<P5_Ejercicio_Detalle session={session} />} />
+          
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+    </HelmetProvider>
   );
 }
+
 export default App;

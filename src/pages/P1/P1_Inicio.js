@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'; //
 import { supabase } from '../../lib/supabase'; 
 import './P1_Inicio.css'; 
 
@@ -8,11 +9,10 @@ const P1_Inicio = () => {
   const [menuAbierto, setMenuAbierto] = useState(false);
   const [facultades, setFacultades] = useState([]);
   const [cargando, setCargando] = useState(true);
-  const [session, setSession] = useState(null); // <-- NUEVO ESTADO
+  const [session, setSession] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // CHEQUEO DE SESIÓN
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
     });
@@ -46,6 +46,16 @@ const P1_Inicio = () => {
 
   return (
     <div className="p1-layout">
+      {/* 🚀 SEO DINÁMICO: Esto es lo que lee el bot de Google */}
+      <Helmet>
+        <title>SXTXRN | Inicio - El Búnker del CBC</title>
+        <meta 
+          name="description" 
+          content="Encontrá resoluciones paso a paso de Análisis Matemático, Química y Física del CBC UBA en SXTXRN. El búnker definitivo para estudiar." 
+        />
+        <link rel="canonical" href="https://satxrn.com.ar" />
+      </Helmet>
+
       <header className="top-bar">
         <div className="search-container">
           <span 
@@ -65,7 +75,6 @@ const P1_Inicio = () => {
           />
         </div>
 
-        {/* BOTÓN DE USUARIO DINÁMICO */}
         <div 
           className="user-icon" 
           onClick={() => !session ? navigate('/login') : console.log("Ir al perfil")}
@@ -94,7 +103,8 @@ const P1_Inicio = () => {
                   key={item.id} 
                   className="full-screen-item"
                   onClick={() => {
-                    const parametro = item.nombre.toLowerCase().replace(/ /g, '-');
+                    // Normalizamos el nombre para la URL
+                    const parametro = item.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ /g, '-');
                     navigate(`/facultad/${parametro}`);
                   }}
                 >
@@ -123,7 +133,7 @@ const P1_Inicio = () => {
           style={{ fontSize: '1.5rem', cursor: 'pointer' }}
           onClick={() => {
             setMenuAbierto(false); 
-            setBusqueda('');       
+            setBusqueda('');       
           }}
         >
           [ ⌂ ]
