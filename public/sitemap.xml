@@ -1,1073 +1,1329 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
   <url>
     <loc>https://satxrn.com.ar</loc>
+    <lastmod>2026-02-23</lastmod>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://satxrn.com.ar/quimica</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://satxrn.com.ar/analisis-matematico</loc>
-    <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/21</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-limites-21</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/22</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-recta-tangente-22</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/23</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-y-derivabilidad-23</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/24</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-ecuaciones-24</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/3</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-funciones-partidas-parametros-3</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/2</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivadas-recta-tangente-2</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/1</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-y-limites-1</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/4</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-imagen-4</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/5</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-limites-comparacion-de-infinitos-5</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/6</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-recta-tangente-regla-de-la-cadena-6</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/7</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-polinomios-de-taylor-7</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/8</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-imagen-8</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/9</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-limites-numero-e-9</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/10</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-recta-tangente-regla-de-la-cadena-10</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/11</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivabilidad-en-un-punto-11</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/12</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-imagen-12</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/13</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-limites-conjugados-13</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/14</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-recta-tangente-14</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/15</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivabilidad-por-definicion-15</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/16</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-imagen-16</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/17</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-limites-17</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/18</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-recta-tangente-18</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/19</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-y-derivabilidad-19</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/20</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-ecuaciones-20</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/25</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-limites-25</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/27</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-y-derivabilidad-27</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/26</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivadas-recta-tangente-26</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/28</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-desigualdades-28</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/29</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-limites-29</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/30</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivadas-recta-tangente-30</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/57</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-uniones-quimicas-nomenclatura-57</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/31</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-y-derivabilidad-31</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/32</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-ecuaciones-32</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/33</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-limites-33</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/34</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivadas-recta-tangente-34</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/35</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-y-derivabilidad-35</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/36</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-desigualdades-36</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/37</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-limites-37</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/38</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivadas-recta-tangente-38</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/39</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-y-derivabilidad-39</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/40</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-ecuaciones-40</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/41</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-limites-41</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/42</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivadas-recta-tangente-42</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/43</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-y-derivabilidad-43</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/44</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-imagen-44</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/45</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-limites-45</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/46</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivadas-recta-tangente-46</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/47</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-y-derivabilidad-47</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/48</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-imagen-48</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/49</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-sucesiones-limites-49</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/50</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-derivadas-recta-tangente-50</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/51</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-continuidad-y-derivabilidad-51</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/52</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-analisis-estudio-de-funciones-ecuaciones-52</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/53</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-y-unidades-53</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/54</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-sistemas-materiales-54</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/55</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-55</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/56</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-tabla-periodica-56</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/58</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-geometria-molecular-tpecv-58</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/59</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-propiedades-de-las-sustancias-59</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/60</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-60</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/61</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-61</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/62</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-62</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/63</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-63</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/64</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-64</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/65</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-y-unidades-65</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/66</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-sistemas-materiales-66</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/67</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-67</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/68</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-tabla-periodica-68</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/69</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-uniones-quimicas-nomenclatura-69</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/70</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-geometria-molecular-tpecv-70</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/71</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-propiedades-de-las-sustancias-71</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/72</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-72</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/73</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-73</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/74</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-74</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/75</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-75</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/76</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-teoria-76</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/77</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-y-unidades-77</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/78</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-sistemas-materiales-78</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/79</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-79</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/80</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-e-isoelectronicos-80</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/81</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-uniones-quimicas-lewis-81</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/82</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-geometria-molecular-tpecv-82</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/83</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-propiedades-de-las-sustancias-83</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/84</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-84</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/85</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-85</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/86</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-86</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/87</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-87</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/88</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-teoria-88</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/89</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-y-unidades-89</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/90</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-soluciones-90</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/92</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-tabla-periodica-92</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/93</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-uniones-quimicas-y-nomenclatura-93</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/94</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-geometria-molecular-tpecv-94</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/95</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-propiedades-de-las-sustancias-95</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/96</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-96</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/97</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-97</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/98</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-teoria-98</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/99</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-99</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/100</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-teoria-100</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/91</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-91</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/101</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-101</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/102</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-sistemas-materiales-composicion-102</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/103</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-103</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/104</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-tabla-periodica-e-isoelectronicos-104</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/105</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-uniones-quimicas-nomenclatura-105</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/106</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-geometria-molecular-tpecv-106</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/107</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-propiedades-de-las-sustancias-107</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/108</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-108</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/109</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-109</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/110</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-110</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/111</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-111</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/112</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-teoria-112</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/113</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-soluciones-113</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/114</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estados-de-agregacion-114</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/115</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-115</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/116</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-tabla-periodica-cee-116</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/117</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-uniones-quimicas-lewis-117</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/118</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-nomenclatura-118</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/119</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-geometria-molecular-tpecv-119</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/120</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-propiedades-de-las-sustancias-120</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/121</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-121</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/122</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-122</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/123</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-teoria-123</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/124</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-124</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/125</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-y-unidades-125</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/126</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-126</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/127</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-127</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/154</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-geometria-molecular-tpecv-154</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/128</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-tabla-periodica-e-isoelectronicos-128</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/129</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-uniones-quimicas-lewis-129</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/130</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-nomenclatura-130</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/131</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-geometria-molecular-tpecv-131</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/132</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-propiedades-de-las-sustancias-132</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/133</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-133</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/134</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-134</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/135</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-135</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/136</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-136</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/137</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-y-unidades-137</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/138</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-soluciones-composicion-138</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/139</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-139</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/140</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-tabla-periodica-140</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/141</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-uniones-quimicas-nomenclatura-141</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/142</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-geometria-molecular-tpecv-142</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/143</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-propiedades-de-las-sustancias-143</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/144</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-144</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/145</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-densidad-145</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/146</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-146</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/147</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-mezclas-147</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/148</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-densidad-148</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/149</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-149</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/150</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-sistemas-materiales-composicion-150</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/151</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-estructura-atomica-151</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/152</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-tabla-periodica-152</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/153</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-uniones-quimicas-lewis-153</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/155</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-propiedades-de-las-sustancias-155</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/156</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-156</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/157</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-157</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/158</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-magnitudes-atomico-moleculares-158</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/159</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-159</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/160</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-quimica-gases-ideales-teoria-160</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/161</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-epistemologia-platonica-161</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/162</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-historia-de-la-ciencia-argentina-162</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/163</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-semiotica-peirce-163</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/164</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-filosofia-del-lenguaje-164</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/165</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-logica-proposicional-165</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/166</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-logica-proposicional-166</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/167</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-logica-proposicional-167</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/168</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-tipos-de-razonamiento-168</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/169</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-epistemologia-del-siglo-xx-169</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/170</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-etica-y-ciencia-170</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/171</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-filosofia-antigua-171</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/172</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-historia-universitaria-172</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/173</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-semiotica-peirce-173</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/174</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-filosofia-moderna-174</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/175</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-logica-proposicional-175</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/176</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-logica-formal-176</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/177</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-definiciones-177</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/178</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-falacias-materiales-178</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/179</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-semiotica-dimensiones-179</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/180</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-pensamiento-cientifico-logica-formal-180</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/181</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-elementos-del-estado-181</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/182</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-globalizacion-y-soberania-182</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/183</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-concepto-de-estatalidad-183</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/184</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-actores-sociales-en-argentina-184</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/185</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-concepto-de-estado-y-estatidad-185</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/186</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-estado-y-globalizacion-186</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/187</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-integracion-de-inmigrantes-187</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/188</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-formacion-del-estado-argentino-188</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/189</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-estado-y-globalizacion-189</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/190</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-inmigracion-e-integracion-190</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/191</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-fragmentacion-de-clases-medias-191</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/192</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-gobiernos-kirchneristas-192</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/193</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-extractivismo-en-america-latina-193</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/194</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-sociedad-y-estado-concepto-de-genero-194</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/195</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-niveles-de-organizacion-195</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/196</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-proteinas-196</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/197</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-biomoleculas-197</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/198</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-bioenergetica-y-enzimas-198</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/199</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-enzimas-alostericas-199</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/200</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-fotosintesis-200</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/201</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-metabolismo-energetico-201</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/202</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-respiracion-celular-202</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/203</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-membranas-biologicas-203</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/204</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-transporte-de-membrana-204</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/205</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-propiedades-de-la-vida-205</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/206</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-uniones-quimicas-206</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/207</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-lipidos-207</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/208</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-termodinamica-celular-208</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/209</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-alosterismo-209</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/210</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-fotosintesis-210</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/211</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-fotosintesis-y-marcacion-211</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/212</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-eficiencia-energetica-212</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/213</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-membrana-plasmatica-213</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/214</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-transporte-de-membrana-214</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/215</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-niveles-de-organizacion-215</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/216</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-solubilidad-216</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/217</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-biomoleculas-217</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/218</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-bioenergetica-218</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/219</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-cinetica-enzimatica-219</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/220</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-fotosintesis-y-radioactividad-220</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/221</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-metabolismo-de-levaduras-221</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/222</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-ciclo-de-krebs-222</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/223</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-membranas-biologicas-223</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/224</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-transporte-de-glucosa-224</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/225</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-niveles-de-organizacion-225</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/226</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-estructura-del-adn-226</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/227</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-carbohidratos-227</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/228</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-bioenergetica-228</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/229</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-alosterismo-y-cooperatividad-229</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/230</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-fotosintesis-230</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/231</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-rendimiento-energetico-231</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/232</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-respiracion-celular-232</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/233</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-membranas-biologicas-233</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/234</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-transporte-de-membrana-234</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/235</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-propiedades-de-la-vida-235</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/236</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-uniones-quimicas-236</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/237</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-termodinamica-237</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/238</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-regulacion-enzimatica-238</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/239</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-fotosintesis-239</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/240</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-metabolismo-energetico-240</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/241</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-ciclo-de-krebs-241</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/242</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-membranas-celulares-242</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/243</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-transporte-de-membrana-243</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/244</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-impulso-nervioso-244</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/245</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-sistemas-y-homeostasis-245</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/246</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-estructura-proteica-246</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/247</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-lipidos-247</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/248</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-termodinamica-celular-248</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/249</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-retroinhibicion-249</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/250</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-fotosintesis-y-marcacion-250</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/251</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-metabolismo-humano-251</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/252</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-ciclo-de-krebs-252</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/253</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-osmosis-253</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/254</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-fluidez-de-membrana-254</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/255</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-niveles-de-organizacion-255</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/256</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-estructura-del-adn-256</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/257</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-proteinas-257</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/258</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-termodinamica-258</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/259</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-regulacion-enzimatica-259</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/260</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-fotosintesis-260</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/261</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-metabolismo-bacteriano-261</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/262</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-lipogenesis-262</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/263</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-membranas-biologicas-263</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/264</loc>
-    <priority>0.6</priority>
+    <loc>https://satxrn.com.ar/ejercicio/cbc-biologia-celular-transporte-de-membrana-264</loc>
+    <lastmod>2026-02-23</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>

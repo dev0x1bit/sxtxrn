@@ -4,69 +4,74 @@ const { createClient } = require('@supabase/supabase-js');
 
 function loadEnv() {
   const envPath = path.resolve(process.cwd(), '.env');
-  if (!fs.existsSync(envPath)) {
-    console.log('❌ ERROR: No se encontró el archivo .env en: ' + envPath);
-    return;
-  }
-  
+  if (!fs.existsSync(envPath)) return;
   const envContent = fs.readFileSync(envPath, 'utf8');
   envContent.split('\n').forEach(line => {
-    // Limpiamos la línea de espacios y posibles retornos de carro (\r)
     const [key, ...valueParts] = line.trim().split('=');
     if (key && valueParts.length > 0) {
-      const value = valueParts.join('=').replace(/^["']|["']$/g, ''); // Quitamos comillas si tiene
-      process.env[key.trim()] = value.trim();
+      const value = valueParts.join('=').replace(/^["']|["']$/g, '').trim();
+      process.env[key.trim()] = value;
     }
   });
 }
 
 loadEnv();
 
-// --- DEBUG: Chequeo de variables ---
-console.log('📡 URL:', process.env.REACT_APP_SUPABASE_URL ? 'Cargada ✅' : 'VACÍA ❌');
-console.log('🔑 KEY:', process.env.REACT_APP_SUPABASE_ANON_KEY ? 'Cargada ✅' : 'VACÍA ❌');
+/**
+ * SLUGIFY PRO: Quita acentos, eñes y caracteres raros.
+ */
+const slugify = (text) => {
+  if (!text) return '';
+  return text
+    .toString()
+    .normalize('NFD')                   // Descompone acentos (á -> a + ´)
+    .replace(/[\u0300-\u036f]/g, '')    // Borra los acentos (el palito solo)
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')               // Espacios por guiones
+    .replace(/[^\w-]+/g, '')            // Borra todo lo que no sea letra, número o guion
+    .replace(/--+/g, '-');              // No deja guiones dobles
+};
 
-const supabase = createClient(
-  process.env.REACT_APP_SUPABASE_URL || "", 
-  process.env.REACT_APP_SUPABASE_ANON_KEY || ""
-);
+const supabase = createClient(process.env.REACT_APP_SUPABASE_URL || "", process.env.REACT_APP_SUPABASE_ANON_KEY || "");
 
 async function generate() {
+  console.log('--- 🚀 Generando Sitemap Jerárquico Limpio ---');
   try {
-    console.log('--- 🔍 Consultando tab_ejercicios... ---');
-    
-    const { data: ejercicios, error } = await supabase
-      .from('tab_ejercicios') // Nombre real según tu query
-      .select('id'); 
+    // Traemos Ejercicios y Materias
+    const { data: ejercicios } = await supabase.from('tab_ejercicios').select('id, tema, materia_id');
+    const { data: materias } = await supabase.from('tab_materias').select('id, nombre');
 
-    if (error) {
-      console.error('❌ Error de Supabase:', error.message);
-      return;
-    }
-
-    console.log(`📊 Datos recibidos: ${ejercicios?.length || 0} ejercicios.`);
-
-    const staticRoutes = ['', '/quimica', '/analisis-matematico']; 
+    const materiasMap = Object.fromEntries(materias.map(m => [m.id, m.nombre]));
+    const today = new Date().toISOString().split('T')[0];
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${staticRoutes.map(route => `
   <url>
-    <loc>https://satxrn.com.ar${route}</loc>
-    <priority>${route === '' ? '1.0' : '0.8'}</priority>
-  </url>`).join('')}
-  ${ejercicios && ejercicios.length > 0 ? ejercicios.map(ej => `
+    <loc>https://satxrn.com.ar</loc>
+    <lastmod>${today}</lastmod>
+    <priority>1.0</priority>
+  </url>
+  ${ejercicios ? ejercicios.map(ej => {
+    const materiaClean = slugify(materiasMap[ej.materia_id]);
+    const temaClean = slugify(ej.tema);
+    
+    // Armamos la URL: cbc-analisis-matematico-sucesiones-21
+    const superSlug = `cbc-${materiaClean}-${temaClean}-${ej.id}`;
+    
+    return `
   <url>
-    <loc>https://satxrn.com.ar/ejercicio/${ej.id}</loc>
-    <priority>0.6</priority>
-  </url>`).join('') : ''}
+    <loc>https://satxrn.com.ar/ejercicio/${superSlug}</loc>
+    <lastmod>${today}</lastmod>
+    <priority>0.7</priority>
+  </url>`;
+  }).join('') : ''}
 </urlset>`;
 
     fs.writeFileSync('public/sitemap.xml', sitemap);
-    console.log('💾 Archivo guardado en public/sitemap.xml');
-    
+    console.log(`✅ ¡Éxito! Sitemap generado sin acentos y con jerarquía.`);
   } catch (err) {
-    console.error('💥 Error crítico:', err.message);
+    console.error('❌ Error:', err.message);
   }
 }
 
