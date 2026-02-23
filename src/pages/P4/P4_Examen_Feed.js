@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'; //
 import { supabase } from '../../lib/supabase';
 import LaTeX from 'react-latex-next'; 
 import './P4_Examen_Feed.css';
@@ -9,6 +10,7 @@ const P4_Examen_Feed = ({ session }) => {
   const navigate = useNavigate();
   
   const [ejercicios, setEjercicios] = useState([]);
+  const [nombreRecurso, setNombreRecurso] = useState(''); // Nuevo: para el <title>
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
@@ -17,9 +19,19 @@ const P4_Examen_Feed = ({ session }) => {
       try {
         setCargando(true);
         let recursoIdFinal = id;
+        
+        // 🚀 Buscamos el nombre del recurso para el SEO
+        if (!isNaN(id)) {
+          const { data: recName } = await supabase.from('tab_recursos').select('nombre').eq('id', id).single();
+          if (recName) setNombreRecurso(recName.nombre);
+        }
+
         if (isNaN(id)) {
-          const { data: rec } = await supabase.from('tab_recursos').select('id').ilike('nombre', id.replace(/-/g, ' ')).maybeSingle();
-          if (rec) recursoIdFinal = rec.id;
+          const { data: rec } = await supabase.from('tab_recursos').select('id, nombre').ilike('nombre', id.replace(/-/g, ' ')).maybeSingle();
+          if (rec) {
+            recursoIdFinal = rec.id;
+            setNombreRecurso(rec.nombre);
+          }
         }
 
         const { data: ejData, error: ejError } = await supabase.from('tab_ejercicios').select('*').eq('recurso_id', parseInt(recursoIdFinal)).order('id', { ascending: true });
@@ -47,14 +59,24 @@ const P4_Examen_Feed = ({ session }) => {
     fetchEjerciciosYConteos();
   }, [id]);
 
-  const tituloExamen = id ? `/${id.toUpperCase().replace(/-/g, ' ')}` : '/FEED';
+  const tituloExamen = nombreRecurso || id;
 
   return (
     <div className="p4-layout">
+      {/* 🚀 SEO DINÁMICO: Título específico del examen */}
+      <Helmet>
+        <title>{`Ejercicios de ${tituloExamen.toUpperCase()} | SXTXRN`}</title>
+        <meta 
+          name="description" 
+          content={`Lista de ejercicios resueltos de ${tituloExamen}. Mirá las resoluciones verificadas y comentarios de la comunidad en el búnker.`} 
+        />
+        <link rel="canonical" href={`https://satxrn.com.ar/visor/${id}`} />
+      </Helmet>
+
       <header className="top-bar">
         <div className="search-container">
           <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
-          <span className="section-title">FEED: {tituloExamen}</span>
+          <span className="section-title">FEED: /{tituloExamen.toUpperCase()}</span>
         </div>
         <div className="user-icon" onClick={() => !session && navigate('/login')} style={{ cursor: 'pointer' }}>
           {session ? (
@@ -83,12 +105,10 @@ const P4_Examen_Feed = ({ session }) => {
 
                 <div className="post-footer">
                   <div className="footer-left">
-                    {/* LÓGICA DE COLOR: UP > DOWN = VERDE */}
                     <div className={`stat-group ${ej.real_up > ej.real_down ? 'score-up' : ''}`}>
                       <span className="stat-icon">▲</span>
                       <span className="stat-value">{ej.real_up || 0}</span>
                     </div>
-                    {/* LÓGICA DE COLOR: DOWN > UP = ROJO */}
                     <div className={`stat-group ${ej.real_down > ej.real_up ? 'score-down' : ''}`}>
                       <span className="stat-icon">▼</span>
                       <span className="stat-value">{ej.real_down || 0}</span>

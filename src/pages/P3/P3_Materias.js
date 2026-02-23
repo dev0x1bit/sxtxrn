@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'; //
 import { supabase } from '../../lib/supabase';
 import './P3_Materias.css';
 
@@ -9,6 +10,7 @@ const P3_Materias = ({ session }) => {
   
   const [carpetaAbierta, setCarpetaAbierta] = useState(null);
   const [carpetasReales, setCarpetasReales] = useState([]);
+  const [nombreMateria, setNombreMateria] = useState(''); // Nuevo estado para SEO
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
@@ -20,7 +22,17 @@ const P3_Materias = ({ session }) => {
 
       try {
         setCargando(true);
-        // FIX 1: Incluimos el 'id' en el select para poder navegar correctamente
+
+        // 🚀 SEO DATA: Traemos el nombre de la materia para el Helmet
+        const { data: materiaInfo } = await supabase
+          .from('tab_materias')
+          .select('nombre')
+          .eq('id', id)
+          .single();
+        
+        if (materiaInfo) setNombreMateria(materiaInfo.nombre);
+
+        // Fetch de los recursos
         const { data: logs, error } = await supabase
           .from('tab_recursos')
           .select('id, nombre, categoria') 
@@ -35,7 +47,6 @@ const P3_Materias = ({ session }) => {
             if (!acc[cat]) {
               acc[cat] = { titulo: cat, archivos: [] };
             }
-            // FIX 2: Guardamos el objeto completo (id y nombre) en lugar de solo el string
             acc[cat].archivos.push({ id: curr.id, nombre: curr.nombre });
             return acc;
           }, {});
@@ -52,12 +63,24 @@ const P3_Materias = ({ session }) => {
     fetchContenido();
   }, [id]);
 
+  const displayTitle = nombreMateria || id;
+
   return (
     <div className="p3-layout">
+      {/* 🚀 SEO DINÁMICO: Inyectamos el nombre de la materia en el HEAD */}
+      <Helmet>
+        <title>{`Recursos de ${displayTitle.toUpperCase()} | SXTXRN`}</title>
+        <meta 
+          name="description" 
+          content={`Descargá parciales, finales y guías de ${displayTitle} en el búnker de SXTXRN. Todo el material del CBC organizado por categorías.`} 
+        />
+        <link rel="canonical" href={`https://satxrn.com.ar/materia/${id}`} />
+      </Helmet>
+
       <header className="top-bar">
         <div className="search-container">
           <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
-          <span className="section-title">DB_ENTRY: /{id}</span>
+          <span className="section-title">DB_ENTRY: /{displayTitle.toUpperCase()}</span>
         </div>
 
         <div 
@@ -103,11 +126,7 @@ const P3_Materias = ({ session }) => {
                         <div 
                           key={i} 
                           className="sub-item"
-                          onClick={() => {
-                            // FIX 3: Navegamos usando el ID numérico real
-                            // Esto garantiza que la P4 reciba el recurso_id correcto
-                            navigate(`/visor/${archivo.id}`); 
-                          }}
+                          onClick={() => navigate(`/visor/${archivo.id}`)}
                         >
                           - {archivo.nombre.toUpperCase()}
                         </div>
@@ -118,7 +137,7 @@ const P3_Materias = ({ session }) => {
               );
             })
           ) : (
-            <div className="full-screen-item">[ NO HAY RECURSOS PARA EL ID {id} ]</div>
+            <div className="full-screen-item">[ NO HAY RECURSOS PARA {displayTitle} ]</div>
           )}
         </div>
       </main>

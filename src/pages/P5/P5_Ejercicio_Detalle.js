@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'; //
 import { supabase } from '../../lib/supabase';
 import LaTeX from 'react-latex-next';
 import P5_ReplyDrawer from './P5_ReplyDrawer';
@@ -9,15 +10,30 @@ const P5_Ejercicio_Detalle = ({ session }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   
+  // 🚀 EXTRAEMOS EL ID REAL (por si viene de un slug del sitemap)
+  const numericId = id.includes('-') ? id.split('-').pop() : id;
+
   const [ejercicio, setEjercicio] = useState(null);
   const [hilo, setHilo] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [childrenHidden, setChildrenHidden] = useState({});
-  const [isAllCollapsed, setIsAllCollapsed] = useState(true); // Arrancamos asumiendo que todo está cerrado
+  const [isAllCollapsed, setIsAllCollapsed] = useState(true);
   const [votosUsuario, setVotosUsuario] = useState({}); 
   const [replyTarget, setReplyTarget] = useState(null); 
 
-  // --- VOTOS BLINDADOS ---
+  // 🧹 LIMPIEZA DE LATEX PARA SEO (Google no entiende símbolos)
+  const cleanDescription = (text) => {
+    if (!text) return "";
+    return text
+      .replace(/\$/g, '')
+      .replace(/\\[a-zA-Z]+/g, ' ')
+      .replace(/\{|\}/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .substring(0, 160);
+  };
+
+  // --- VOTOS BLINDADOS (Tu lógica original) ---
   const handleVote = async (idDestino, tipoEntidad, type) => {
     if (!session) return alert("Debes entrar al búnker.");
     const userId = session.user.id;
@@ -68,9 +84,10 @@ const P5_Ejercicio_Detalle = ({ session }) => {
     const fetchFullDetalle = async () => {
       try {
         setCargando(true);
-        const { data: ej } = await supabase.from('tab_ejercicios').select('enunciado').eq('id', id).single();
+        // Traemos enunciado y tema para el SEO
+        const { data: ej } = await supabase.from('tab_ejercicios').select('enunciado, tema').eq('id', numericId).single();
         setEjercicio(ej);
-        const { data: res } = await supabase.from('tab_resoluciones').select('*').eq('ejercicio_id', id).order('orden', { ascending: true });
+        const { data: res } = await supabase.from('tab_resoluciones').select('*').eq('ejercicio_id', numericId).order('orden', { ascending: true });
         
         if (res) {
           const ids = res.map(r => r.id);
@@ -83,8 +100,6 @@ const P5_Ejercicio_Detalle = ({ session }) => {
           
           setHilo(finalHilo);
 
-          // 🚀 MAGIA: INICIALIZAR TODO COLAPSADO
-          // Solo metemos las resoluciones (los padres) en el estado de "ocultos"
           const initialState = {};
           finalHilo.forEach(r => {
             initialState[`res_${r.id}`] = true;
@@ -105,18 +120,15 @@ const P5_Ejercicio_Detalle = ({ session }) => {
       } catch (err) { console.error(err); } finally { setCargando(false); }
     };
     fetchFullDetalle();
-  }, [id, session]);
+  }, [numericId, session]);
 
-  // --- LOGICA DE EXPANDIR/CONTRAER ---
   const handleGlobalToggle = () => {
     if (isAllCollapsed) {
-      setChildrenHidden({}); // Al vaciarlo, todo se expande
+      setChildrenHidden({});
       setIsAllCollapsed(false);
     } else {
       const allIds = {};
-      hilo.forEach(res => {
-        allIds[`res_${res.id}`] = true;
-      });
+      hilo.forEach(res => { allIds[`res_${res.id}`] = true; });
       setChildrenHidden(allIds);
       setIsAllCollapsed(true);
     }
@@ -129,8 +141,6 @@ const P5_Ejercicio_Detalle = ({ session }) => {
   const renderTree = (list, pid, resId) => {
     const hijos = list.filter(c => Number(c.parent_id) === Number(pid));
     return hijos.map(com => {
-      // Como no metemos los comentarios en childrenHidden al inicio,
-      // isHidden será undefined (false), por lo tanto se verán siempre.
       const isHidden = childrenHidden[`com_${com.id}`];
       const totalHijos = countDescendants(list, com.id);
       const userVote = votosUsuario[`comentario_${com.id}`];
@@ -147,8 +157,6 @@ const P5_Ejercicio_Detalle = ({ session }) => {
               </span>
               <span className="msg-counter"><span className="msg-icon">💬</span> {totalHijos}</span>
               <span className="action-link" onClick={() => setReplyTarget({ id: com.id, tipo: 'comentario', autor: 'User', texto: com.contenido_latex, resolucionId: resId })}>Responder</span>
-              
-              {/* Solo mostramos el botón de ocultar si queremos contraer una rama específica */}
               {totalHijos > 0 && (
                 <span className="action-link toggle-btn" onClick={() => setChildrenHidden(p => ({...p, [`com_${com.id}`]: !p[`com_${com.id}`]}))}>
                   {isHidden ? `[ + ] Ver ${totalHijos}` : '[ - ] Ocultar'}
@@ -165,7 +173,7 @@ const P5_Ejercicio_Detalle = ({ session }) => {
   const submitReply = async (text) => {
     if (!text.trim()) return;
     const nuevo = {
-      ejercicio_id: id, resolucion_id: replyTarget.resolucionId,
+      ejercicio_id: numericId, resolucion_id: replyTarget.resolucionId,
       usuario_id: session.user.id, contenido_latex: text,
       parent_id: replyTarget.tipo === 'comentario' ? replyTarget.id : null,
       votos_up: 0, votos_down: 0
@@ -179,6 +187,13 @@ const P5_Ejercicio_Detalle = ({ session }) => {
 
   return (
     <div className="p5-layout">
+      {/* 🚀 SEO DINÁMICO BLINDADO */}
+      <Helmet>
+        <title>{`${ejercicio?.tema || 'Ejercicio'} Resuelto | SXTXRN`}</title>
+        <meta name="description" content={cleanDescription(ejercicio?.enunciado)} />
+        <link rel="canonical" href={`https://satxrn.com.ar/ejercicio/${id}`} />
+      </Helmet>
+
       <header className="p5-header">
         <div className="p5-nav"><span onClick={() => navigate(-1)} style={{cursor:'pointer'}}>{'<'} VOLVER</span><div>{session ? "U" : "LOGIN"}</div></div>
         <div className="op-enunciado math-render"><LaTeX>{ejercicio?.enunciado || ''}</LaTeX></div>
@@ -188,6 +203,7 @@ const P5_Ejercicio_Detalle = ({ session }) => {
           </span>
         </div>
       </header>
+
       <main className="p5-thread">
         {hilo.map(res => {
           const isHidden = childrenHidden[`res_${res.id}`];
@@ -215,7 +231,6 @@ const P5_Ejercicio_Detalle = ({ session }) => {
                   )}
                 </div>
               </div>
-              {/* Si abrimos la resolución, renderTree mostrará todo porque los hijos no están en childrenHidden */}
               {!isHidden && renderTree(res.tab_comentarios || [], null, res.id)}
             </div>
           );
