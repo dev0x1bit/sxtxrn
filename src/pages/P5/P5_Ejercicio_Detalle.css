@@ -181,6 +181,23 @@
   min-width: 0;
 }
 
+/* 1. El contenedor de ambos botones */
+.vote-btns {
+  display: flex;
+  gap: 12px;       /* 👈 Este es el espacio entre el contador UP y la flecha DOWN */
+  align-items: center;
+}
+
+/* 2. Clase base para que la flecha y su número no estén pegados */
+.v-up, .v-down {
+  display: flex;
+  align-items: center;
+  gap: 6px;        /* 👈 Espacio interno entre la flecha ▲ y el numerito */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* 3. Tus clases de color (mantenelas como las tenías) */
 .v-up.active { color: #00ff41; text-shadow: 0 0 5px #00ff41; }
 .v-down.active { color: #ff003c; text-shadow: 0 0 5px #ff003c; }
 
