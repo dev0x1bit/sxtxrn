@@ -1,11 +1,22 @@
 /* src/pages/P1/P1_Inicio.css */
 
+* {
+  box-sizing: border-box;
+}
+
 .p1-layout {
   display: flex;
   flex-direction: column;
   height: 100dvh; 
   padding: 15px; 
+  background-color: #050505;
+  color: #ccc;
+  font-family: 'VCR_OSD', monospace;
   overflow: hidden; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
 }
 
 /* BARRA SUPERIOR */
@@ -46,10 +57,9 @@
 .user-icon {
   font-size: 1rem;
   cursor: pointer;
-  white-space: nowrap; 
 }
 
-/* CONTENIDO CENTRAL (MODO INICIO) */
+/* MODO INICIO */
 .main-content {
   flex: 1;
   display: flex;
@@ -57,76 +67,68 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 10px; 
 }
 
 .main-content h1 {
   font-size: clamp(1.8rem, 8vw, 3rem); 
   margin-bottom: 10px;
-  word-wrap: break-word;
+  color: #fff;
 }
 
-.main-content p {
-  font-size: 0.9rem; 
-  opacity: 0.8;
-}
-
-/* ==== NUEVO: CONTENIDO CENTRAL (MODO LISTA PANTALLA COMPLETA) ==== */
+/* ==== MODO LISTA (EL RADAR) ==== */
 .main-content-list {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* Estira la lista de lado a lado */
-  overflow-y: auto; /* Agrega scroll exclusivo a esta zona */
-  padding: 10px 0;
-}
-
-.full-screen-menu {
-  display: flex;
-  flex-direction: column;
+  align-items: flex-start; /* 👈 TODO A LA IZQUIERDA */
+  overflow-y: auto; 
   width: 100%;
+  padding-top: 10px;
 }
 
+/* 🚀 TÍTULO DEL GRUPO (FACULTAD) */
+.group-header {
+  width: 100%;
+  padding: 25px 10px 5px 10px; 
+  font-size: 1.8rem;             /* 👈 BIEN GRANDE */
+  color: #ffffff !important;    /* 👈 BLANCO PURO */
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #333;
+  margin-top: 10px;
+}
+
+/* 🚀 ITEM DE MATERIA */
 .full-screen-item {
-  padding: 20px 10px; /* Padding bien grande para que sea fácil tocar con el dedo */
-  border-bottom: 1px solid #333333;
+  width: 100%;
+  padding: 18px 15px; 
+  border-bottom: 1px solid #111;
   cursor: pointer;
-  font-size: 1.1rem; 
+  text-align: left;
+}
+
+.full-screen-item span {
+  font-size: 1.1rem;
   color: #ffffff;
-  transition: background-color 0.2s, color 0.2s;
-  text-align: left; /* Queda más limpio alineado a la izquierda */
+  opacity: 0.8; 
+  text-transform: uppercase;
 }
 
-/* Efecto flash al tocar */
-.full-screen-item:hover, .full-screen-item:active {
+/* Efecto al tocar */
+.full-screen-item:active {
   background-color: #ffffff;
-  color: #050505; 
 }
 
-.full-screen-item.empty {
-  color: #444444;
-  text-align: center;
-  cursor: default;
-  padding-top: 50px;
-  border: none;
+.full-screen-item:active span {
+  color: #050505 !important; 
+  opacity: 1;
 }
 
-/* Scroll invisible pero funcional para el celu */
-.main-content-list::-webkit-scrollbar {
-  width: 5px;
-}
-.main-content-list::-webkit-scrollbar-track {
-  background: #050505; 
-}
-.main-content-list::-webkit-scrollbar-thumb {
-  background: #ffffff; 
-}
-
-/* BARRA INFERIOR */
+/* Barra inferior */
 .bottom-bar {
   border-top: 2px solid #ffffff;
   padding-top: 10px;
-  padding-bottom: 5px; 
   text-align: center;
-  font-size: 0.8rem; 
+  background-color: #050505;
 }

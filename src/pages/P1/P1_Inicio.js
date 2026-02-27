@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'; //
+import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../lib/supabase'; 
 import './P1_Inicio.css'; 
 
 const P1_Inicio = () => {
   const [busqueda, setBusqueda] = useState('');
   const [menuAbierto, setMenuAbierto] = useState(false);
-  const [facultades, setFacultades] = useState([]);
+  const [datosBunker, setDatosBunker] = useState([]); 
   const [cargando, setCargando] = useState(true);
   const [session, setSession] = useState(null);
   const navigate = useNavigate();
@@ -20,75 +20,75 @@ const P1_Inicio = () => {
       setSession(session);
     });
 
-    const fetchFacultades = async () => {
+    const fetchData = async () => {
       try {
         setCargando(true);
-        const { data, error } = await supabase
-          .from('tab_facultades') 
-          .select('*')
-          .order('nombre', { ascending: true });
-        if (error) throw error;
-        setFacultades(data || []);
+        const [resMaterias, resFacultades] = await Promise.all([
+          supabase.from('tab_materias').select('*'),
+          supabase.from('tab_facultades').select('*')
+        ]);
+
+        if (resMaterias.error) throw resMaterias.error;
+        if (resFacultades.error) throw resFacultades.error;
+
+        const combinados = resMaterias.data.map(m => {
+          const f = resFacultades.data.find(facu => facu.id === m.facultad_id);
+          return {
+            ...m,
+            nombreFacultad: f ? f.nombre : 'SXTXRN'
+          };
+        });
+
+        setDatosBunker(combinados);
       } catch (error) {
-        console.error("Error conectando con el búnker:", error.message);
+        console.error("Error en el búnker:", error.message);
       } finally {
         setCargando(false);
       }
     };
 
-    fetchFacultades();
+    fetchData();
     return () => subscription.unsubscribe();
   }, []);
 
-  const resultadosFiltrados = facultades.filter(f => 
-    f.nombre && f.nombre.toLowerCase().includes(busqueda.toLowerCase())
-  );
+  // 1. Filtrado inteligente (Busca en materia o facultad)
+  const resultadosFiltrados = datosBunker.filter(item => {
+    const query = busqueda.toLowerCase();
+    return (
+      item.nombre.toLowerCase().includes(query) || 
+      item.nombreFacultad.toLowerCase().includes(query)
+    );
+  });
+
+  // 2. Agrupamiento por Facultad
+  const grupos = resultadosFiltrados.reduce((acc, item) => {
+    if (!acc[item.nombreFacultad]) {
+      acc[item.nombreFacultad] = [];
+    }
+    acc[item.nombreFacultad].push(item);
+    return acc;
+  }, {});
 
   return (
     <div className="p1-layout">
-      {/* 🚀 SEO DINÁMICO: Esto es lo que lee el bot de Google */}
       <Helmet>
         <title>SXTXRN | Inicio - El Búnker del CBC</title>
-        <meta 
-          name="description" 
-          content="Encontrá resoluciones paso a paso de Análisis Matemático, Química y Física del CBC UBA en SXTXRN. El búnker definitivo para estudiar." 
-        />
-        <link rel="canonical" href="https://satxrn.com.ar" />
       </Helmet>
 
       <header className="top-bar">
         <div className="search-container">
-          <span 
-            className="prompt" 
-            onClick={() => menuAbierto && setMenuAbierto(false)}
-            style={{ cursor: menuAbierto ? 'pointer' : 'default' }}
-          >
-            {menuAbierto ? '<' : '>'}
-          </span>
+          <span className="prompt" onClick={() => setMenuAbierto(false)}>{menuAbierto ? '<' : '>'}</span>
           <input 
             type="text" 
             className="search-input" 
-            placeholder={cargando ? "CONECTANDO..." : "BUSCAR SECCIÓN..."} 
+            placeholder={cargando ? "ESCANEANDO..." : "BUSCAR MATERIA O FACULTAD..."} 
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
             onFocus={() => setMenuAbierto(true)} 
           />
         </div>
-
-        <div 
-          className="user-icon" 
-          onClick={() => !session ? navigate('/login') : console.log("Ir al perfil")}
-          style={{ cursor: 'pointer' }}
-        >
-          {session ? (
-            <img 
-              src={session.user.user_metadata.avatar_url} 
-              alt="avatar" 
-              style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #00ff41' }} 
-            />
-          ) : (
-            "[ LOGIN ]"
-          )}
+        <div className="user-icon" onClick={() => !session ? navigate('/login') : null}>
+          {session ? "PERFIL" : "[ LOGIN ]"}
         </div>
       </header>
 
@@ -96,19 +96,25 @@ const P1_Inicio = () => {
         {menuAbierto ? (
           <div className="full-screen-menu">
             {cargando ? (
-              <div className="full-screen-item">[ ACCEDIENDO A LA DB... ]</div>
-            ) : resultadosFiltrados.length > 0 ? (
-              resultadosFiltrados.map((item) => (
-                <div 
-                  key={item.id} 
-                  className="full-screen-item"
-                  onClick={() => {
-                    // Normalizamos el nombre para la URL
-                    const parametro = item.nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ /g, '-');
-                    navigate(`/facultad/${parametro}`);
-                  }}
-                >
-                  [ {item.nombre.toUpperCase()} ]
+              <div className="full-screen-item">[ ACCEDIENDO... ]</div>
+            ) : Object.keys(grupos).length > 0 ? (
+              Object.keys(grupos).map((facuNombre) => (
+                <div key={facuNombre} style={{ width: '100%' }}>
+                  {/* TÍTULO DE GRUPO: Grande y blanco via CSS */}
+                  <div className="group-header">
+                    {facuNombre.toUpperCase()}
+                  </div>
+
+                  {/* LISTA DE MATERIAS BAJO ESE TÍTULO */}
+                  {grupos[facuNombre].map((materia) => (
+                    <div 
+                      key={materia.id} 
+                      className="full-screen-item"
+                      onClick={() => navigate(`/materia/${materia.id}`)}
+                    >
+                      <span>[ {materia.nombre.toUpperCase()} ]</span>
+                    </div>
+                  ))}
                 </div>
               ))
             ) : (
@@ -116,28 +122,19 @@ const P1_Inicio = () => {
             )}
           </div>
         ) : (
-          <>
+          <div className="main-content">
             <h1>SATXRN</h1>
             <p>... SITIO EN CONSTRUCCION ...</p>
             <p></p>
             <p>... PARCIALES ...</p>
             <p>... EJERCICIOS RESUELTOS ...</p>
             <p>... CBC UBA ...</p>
-          </>
+          </div>
         )}
       </main>
 
       <footer className="bottom-bar">
-        <div 
-          className="home-icon" 
-          style={{ fontSize: '1.5rem', cursor: 'pointer' }}
-          onClick={() => {
-            setMenuAbierto(false); 
-            setBusqueda('');       
-          }}
-        >
-          [ ⌂ ]
-        </div>
+        <div className="home-icon" onClick={() => { setMenuAbierto(false); setBusqueda(''); }}> [ ⌂ ] </div>
       </footer>
     </div>
   );
