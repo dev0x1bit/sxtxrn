@@ -10,14 +10,9 @@ const P1_Avatar = ({ session, onClose }) => {
 
   return (
     <div className="avatar-screen-overlay">
-      {/* 🚀 HEADER CORREGIDO: Sin desbordes */}
       <header className="avatar-header">
-        <div className="avatar-title">
-          SXTXRN // PERFIL_OPERADOR
-        </div>
-        <div className="close-btn" onClick={onClose}>
-          [ X ]
-        </div>
+        <div className="avatar-title">SXTXRN // PERFIL_OPERADOR</div>
+        <div className="close-btn" onClick={onClose}>[ X ]</div>
       </header>
 
       <main className="avatar-content">
@@ -29,15 +24,11 @@ const P1_Avatar = ({ session, onClose }) => {
         <div className="profile-field">
           <label className="profile-label">NICKNAME_ACTUAL</label>
           <div className="profile-value-display">
-            {session?.user?.user_metadata?.full_name || "SIN_IDENTIDAD"}
+            {session?.user?.user_metadata?.full_name || "OPERADOR_ANONIMO"}
           </div>
         </div>
 
-        {/* 🚀 SOLO DESCONECTAR */}
-        <div 
-          className="profile-action logout-btn" 
-          onClick={handleLogout}
-        >
+        <div className="profile-action logout-btn" onClick={handleLogout}>
           [ DESCONECTAR_SISTEMA ]
         </div>
       </main>
