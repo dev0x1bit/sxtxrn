@@ -1,0 +1,106 @@
+/* src/pages/P1/P1_Avatar.css */
+
+.avatar-screen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  background-color: #050505;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  animation: slideDownPerfil 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideDownPerfil {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+/* 🚀 HEADER SIN DESBORDES */
+.avatar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.avatar-title {
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #ffffff;
+  padding: 5px;
+}
+
+.avatar-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 50px;
+  width: 100%;
+}
+
+.profile-field {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.profile-label {
+  color: #ffffff;
+  opacity: 0.4;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.profile-value {
+  color: #ffffff;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+/* 🚀 VISUALIZACIÓN DEL NICK (No editable) */
+.profile-value-display {
+  color: #ffffff;
+  font-size: 1.8rem; /* Tamaño grande solicitado */
+  margin-top: 10px;
+  border-left: 3px solid #ffffff;
+  padding-left: 15px;
+}
+
+.profile-action {
+  width: 100%;
+  padding: 20px 0;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+.logout-btn {
+  color: #ff4b4b; /* Rojo de alerta para desconectar */
+}
+
+.logout-btn:active {
+  background-color: #ff4b4b;
+  color: #050505;
+}
+
+.avatar-footer {
+  opacity: 0.2;
+  font-size: 0.6rem;
+  text-align: center;
+  padding-bottom: 10px;
+}

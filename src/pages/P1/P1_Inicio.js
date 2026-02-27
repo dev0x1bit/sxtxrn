@@ -3,23 +3,36 @@ import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../lib/supabase'; 
 import './P1_Inicio.css'; 
+import P1_Avatar from './P1_Avatar'; 
 
 const P1_Inicio = () => {
   const [busqueda, setBusqueda] = useState('');
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [modalUsuario, setModalUsuario] = useState(false); 
   const [datosBunker, setDatosBunker] = useState([]); 
   const [cargando, setCargando] = useState(true);
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState(null); // 🛡️ Sesión independiente
   const navigate = useNavigate();
 
+  // 1. Detección de sesión (Independiente de App.js)
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
+    const getInitialSession = async () => {
+      const { data: { session: currentSession } } = await supabase.auth.getSession();
+      setSession(currentSession);
+    };
+    getInitialSession();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, currentSession) => {
+      setSession(currentSession);
     });
 
+    return () => {
+      if (subscription) subscription.unsubscribe();
+    };
+  }, []);
+
+  // 2. Carga de datos del radar
+  useEffect(() => {
     const fetchData = async () => {
       try {
         setCargando(true);
@@ -41,17 +54,15 @@ const P1_Inicio = () => {
 
         setDatosBunker(combinados);
       } catch (error) {
-        console.error("Error en el búnker:", error.message);
+        console.error("Error en el radar:", error.message);
       } finally {
         setCargando(false);
       }
     };
-
     fetchData();
-    return () => subscription.unsubscribe();
   }, []);
 
-  // 1. Filtrado inteligente (Busca en materia o facultad)
+  // 3. Lógica de Filtrado y Agrupamiento
   const resultadosFiltrados = datosBunker.filter(item => {
     const query = busqueda.toLowerCase();
     return (
@@ -60,7 +71,6 @@ const P1_Inicio = () => {
     );
   });
 
-  // 2. Agrupamiento por Facultad
   const grupos = resultadosFiltrados.reduce((acc, item) => {
     if (!acc[item.nombreFacultad]) {
       acc[item.nombreFacultad] = [];
@@ -77,7 +87,9 @@ const P1_Inicio = () => {
 
       <header className="top-bar">
         <div className="search-container">
-          <span className="prompt" onClick={() => setMenuAbierto(false)}>{menuAbierto ? '<' : '>'}</span>
+          <span className="prompt" onClick={() => menuAbierto && setMenuAbierto(false)} style={{ cursor: 'pointer' }}>
+            {menuAbierto ? '<' : '>'}
+          </span>
           <input 
             type="text" 
             className="search-input" 
@@ -87,8 +99,22 @@ const P1_Inicio = () => {
             onFocus={() => setMenuAbierto(true)} 
           />
         </div>
-        <div className="user-icon" onClick={() => !session ? navigate('/login') : null}>
-          {session ? "PERFIL" : "[ LOGIN ]"}
+
+        <div 
+          className="user-icon" 
+          onClick={() => !session ? navigate('/login') : setModalUsuario(true)} 
+          style={{ cursor: 'pointer' }}
+        >
+          {session ? (
+            <img 
+              src={session.user.user_metadata.avatar_url || session.user.user_metadata.picture} 
+              alt="u" 
+              style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #00ff41' }} 
+              onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=U&background=00ff41&color=000"; }}
+            />
+          ) : (
+            "[ LOGIN ]"
+          )}
         </div>
       </header>
 
@@ -100,12 +126,9 @@ const P1_Inicio = () => {
             ) : Object.keys(grupos).length > 0 ? (
               Object.keys(grupos).map((facuNombre) => (
                 <div key={facuNombre} style={{ width: '100%' }}>
-                  {/* TÍTULO DE GRUPO: Grande y blanco via CSS */}
                   <div className="group-header">
                     {facuNombre.toUpperCase()}
                   </div>
-
-                  {/* LISTA DE MATERIAS BAJO ESE TÍTULO */}
                   {grupos[facuNombre].map((materia) => (
                     <div 
                       key={materia.id} 
@@ -136,6 +159,13 @@ const P1_Inicio = () => {
       <footer className="bottom-bar">
         <div className="home-icon" onClick={() => { setMenuAbierto(false); setBusqueda(''); }}> [ ⌂ ] </div>
       </footer>
+
+      {modalUsuario && (
+        <P1_Avatar 
+          session={session} 
+          onClose={() => setModalUsuario(false)} 
+        />
+      )}
     </div>
   );
 };
