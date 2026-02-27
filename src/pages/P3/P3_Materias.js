@@ -1,29 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'; //
+import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../lib/supabase';
 import './P3_Materias.css';
 
-const P3_Materias = ({ session }) => {
+const P3_Materias = () => {
   const { id } = useParams(); 
   const navigate = useNavigate();
   
   const [carpetaAbierta, setCarpetaAbierta] = useState(null);
   const [carpetasReales, setCarpetasReales] = useState([]);
-  const [nombreMateria, setNombreMateria] = useState(''); // Nuevo estado para SEO
+  const [nombreMateria, setNombreMateria] = useState('');
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
     const fetchContenido = async () => {
-      if (!id || isNaN(id)) {
-        console.error("ID recibido no es numérico:", id);
-        return;
-      }
+      if (!id || isNaN(id)) return;
 
       try {
         setCargando(true);
 
-        // 🚀 SEO DATA: Traemos el nombre de la materia para el Helmet
         const { data: materiaInfo } = await supabase
           .from('tab_materias')
           .select('nombre')
@@ -32,7 +28,6 @@ const P3_Materias = ({ session }) => {
         
         if (materiaInfo) setNombreMateria(materiaInfo.nombre);
 
-        // Fetch de los recursos
         const { data: logs, error } = await supabase
           .from('tab_recursos')
           .select('id, nombre, categoria') 
@@ -67,12 +62,11 @@ const P3_Materias = ({ session }) => {
 
   return (
     <div className="p3-layout">
-      {/* 🚀 SEO DINÁMICO: Inyectamos el nombre de la materia en el HEAD */}
       <Helmet>
         <title>{`Recursos de ${displayTitle.toUpperCase()} | SXTXRN`}</title>
         <meta 
           name="description" 
-          content={`Descargá parciales, finales y guías de ${displayTitle} en el búnker de SXTXRN. Todo el material del CBC organizado por categorías.`} 
+          content={`Descargá parciales y guías de ${displayTitle} en SXTXRN.`} 
         />
         <link rel="canonical" href={`https://satxrn.com.ar/materia/${id}`} />
       </Helmet>
@@ -82,23 +76,7 @@ const P3_Materias = ({ session }) => {
           <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
           <span className="section-title">DB_ENTRY: /{displayTitle.toUpperCase()}</span>
         </div>
-
-        <div 
-          className="user-icon" 
-          onClick={() => !session && navigate('/login')} 
-          style={{ cursor: 'pointer' }}
-        >
-          {session ? (
-            <img 
-              src={session.user.user_metadata.avatar_url || session.user.user_metadata.picture} 
-              alt="u" 
-              style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #00ff41' }} 
-              onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=U&background=00ff41&color=000"; }}
-            />
-          ) : (
-            "[ LOGIN ]"
-          )}
-        </div>
+        {/* 🚀 ELIMINADO: El icono de usuario y lógica de sesión ya no existen aquí */}
       </header>
 
       <main className="main-content-list">
@@ -137,10 +115,14 @@ const P3_Materias = ({ session }) => {
               );
             })
           ) : (
-            <div className="full-screen-item">[ NO HAY RECURSOS PARA {displayTitle} ]</div>
+            <div className="full-screen-item empty">[ NO HAY RECURSOS PARA {displayTitle} ]</div>
           )}
         </div>
       </main>
+
+      <footer className="bottom-bar">
+        <div className="home-icon" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}> [ ⌂ ] </div>
+      </footer>
     </div>
   );
 };

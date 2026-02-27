@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'; //
+import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../lib/supabase'; 
 import './P2_Facultades.css';
 
-const P2_Facultades = ({ session }) => {
+const P2_Facultades = () => {
   const { id } = useParams(); 
   const navigate = useNavigate();
   const [materias, setMaterias] = useState([]);
@@ -15,7 +15,6 @@ const P2_Facultades = ({ session }) => {
       if (!id) return;
       try {
         setCargando(true);
-        // Usamos ilike para que sea insensible a mayúsculas/acentos al buscar
         const { data: facu } = await supabase
           .from('tab_facultades')
           .select('id')
@@ -28,10 +27,13 @@ const P2_Facultades = ({ session }) => {
             .select('id, nombre')
             .eq('facultad_id', facu.id)
             .order('nombre', { ascending: true });
-          setMaterias(mats);
+          
+          // 🛡️ Filtro de seguridad: Solo materias con código numérico
+          const validas = (mats || []).filter(m => m.nombre && /^\d+/.test(m.nombre.trim()));
+          setMaterias(validas);
         }
       } catch (err) {
-        console.error("Error:", err.message);
+        console.error("Error en el búnker P2:", err.message);
       } finally {
         setCargando(false);
       }
@@ -43,49 +45,36 @@ const P2_Facultades = ({ session }) => {
 
   return (
     <div className="p2-layout">
-      {/* 🚀 SEO DINÁMICO: Cambia según la facultad (ej. CBC, Ingeniería, etc.) */}
       <Helmet>
         <title>{`Materias de ${tituloFacultad} | SXTXRN`}</title>
-        <meta 
-          name="description" 
-          content={`Explorá las materias de ${tituloFacultad} en el búnker de SXTXRN. Encontrá ejercicios resueltos de Análisis Matemático, Álgebra, Química y más.`} 
-        />
-        <link rel="canonical" href={`https://satxrn.com.ar/facultad/${id}`} />
       </Helmet>
 
       <header className="top-bar">
         <div className="search-container">
+          {/* Solo queda la navegación y el título */}
           <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
           <span className="section-title">FAC: /{tituloFacultad}</span>
         </div>
-        
-        <div className="user-icon" onClick={() => !session && navigate('/login')} style={{ cursor: 'pointer' }}>
-          {session ? (
-            <img 
-              src={session.user.user_metadata.avatar_url || session.user.user_metadata.picture} 
-              alt="u" 
-              style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #00ff41' }} 
-              onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=U&background=00ff41&color=000"; }}
-            />
-          ) : (
-            "[ LOGIN ]"
-          )}
-        </div>
+        {/* 🚀 ACÁ ESTABA EL USER-ICON, AHORA ESTÁ FULMINADO */}
       </header>
 
       <main className="main-content-list">
         <div className="full-screen-menu">
           {cargando ? (
-            <div className="full-screen-item">[ ACCEDIENDO AL SISTEMA... ]</div>
-          ) : materias.map((m) => (
-            <div 
-              key={m.id} 
-              className="full-screen-item" 
-              onClick={() => navigate(`/materia/${m.id}`)}
-            >
-              [ {m.nombre.toUpperCase()} ]
-            </div>
-          ))}
+            <div className="full-screen-item">[ ESCANEANDO SISTEMA... ]</div>
+          ) : materias.length > 0 ? (
+            materias.map((m) => (
+              <div 
+                key={m.id} 
+                className="full-screen-item" 
+                onClick={() => navigate(`/materia/${m.id}`)}
+              >
+                [ {m.nombre.toUpperCase()} ]
+              </div>
+            ))
+          ) : (
+            <div className="full-screen-item empty">[ NO HAY REGISTROS ]</div>
+          )}
         </div>
       </main>
 

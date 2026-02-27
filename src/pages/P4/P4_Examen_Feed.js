@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'; //
+import { Helmet } from 'react-helmet-async'; 
 import { supabase } from '../../lib/supabase';
 import LaTeX from 'react-latex-next'; 
 import './P4_Examen_Feed.css';
 
-const P4_Examen_Feed = ({ session }) => {
+const P4_Examen_Feed = () => {
   const { id } = useParams(); 
   const navigate = useNavigate();
   
   const [ejercicios, setEjercicios] = useState([]);
-  const [nombreRecurso, setNombreRecurso] = useState(''); // Nuevo: para el <title>
+  const [nombreRecurso, setNombreRecurso] = useState(''); 
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
@@ -20,7 +20,6 @@ const P4_Examen_Feed = ({ session }) => {
         setCargando(true);
         let recursoIdFinal = id;
         
-        // 🚀 Buscamos el nombre del recurso para el SEO
         if (!isNaN(id)) {
           const { data: recName } = await supabase.from('tab_recursos').select('nombre').eq('id', id).single();
           if (recName) setNombreRecurso(recName.nombre);
@@ -63,12 +62,11 @@ const P4_Examen_Feed = ({ session }) => {
 
   return (
     <div className="p4-layout">
-      {/* 🚀 SEO DINÁMICO: Título específico del examen */}
       <Helmet>
         <title>{`Ejercicios de ${tituloExamen.toUpperCase()} | SXTXRN`}</title>
         <meta 
           name="description" 
-          content={`Lista de ejercicios resueltos de ${tituloExamen}. Mirá las resoluciones verificadas y comentarios de la comunidad en el búnker.`} 
+          content={`Lista de ejercicios resueltos de ${tituloExamen} en el búnker.`} 
         />
         <link rel="canonical" href={`https://satxrn.com.ar/visor/${id}`} />
       </Helmet>
@@ -78,11 +76,7 @@ const P4_Examen_Feed = ({ session }) => {
           <span className="prompt" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>{'<'}</span>
           <span className="section-title">FEED: /{tituloExamen.toUpperCase()}</span>
         </div>
-        <div className="user-icon" onClick={() => !session && navigate('/login')} style={{ cursor: 'pointer' }}>
-          {session ? (
-            <img src={session.user.user_metadata.avatar_url || session.user.user_metadata.picture} alt="u" style={{ width: '28px', height: '28px', borderRadius: '50%', border: '1px solid #00ff41', objectFit: 'cover' }} onError={(e) => { e.target.src = "https://ui-avatars.com/api/?name=U&background=00ff41&color=000"; }} />
-          ) : "[ LOGIN ]"}
-        </div>
+        {/* 🚀 ELIMINADO: Ya no hay rastro de user-icon ni login aquí */}
       </header>
 
       <main className="main-feed">
@@ -130,6 +124,7 @@ const P4_Examen_Feed = ({ session }) => {
           )}
         </div>
       </main>
+      
       <footer className="bottom-bar">
         <div className="home-icon" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>[ ⌂ ]</div>
       </footer>

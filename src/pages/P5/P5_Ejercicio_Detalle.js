@@ -6,11 +6,9 @@ import LaTeX from 'react-latex-next';
 import P5_ReplyDrawer from './P5_ReplyDrawer';
 import './P5_Ejercicio_Detalle.css';
 
-const P5_Ejercicio_Detalle = ({ session }) => {
+const P5_Ejercicio_Detalle = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
-  // 🚀 EXTRAEMOS EL ID REAL (por si viene de un slug del sitemap)
   const numericId = id.includes('-') ? id.split('-').pop() : id;
 
   const [ejercicio, setEjercicio] = useState(null);
@@ -20,22 +18,22 @@ const P5_Ejercicio_Detalle = ({ session }) => {
   const [isAllCollapsed, setIsAllCollapsed] = useState(true);
   const [votosUsuario, setVotosUsuario] = useState({}); 
   const [replyTarget, setReplyTarget] = useState(null); 
+  const [session, setSession] = useState(null); // 🛡️ Sesión independiente
 
-  // 🧹 LIMPIEZA DE LATEX PARA SEO (Google no entiende símbolos)
+  // 1. Detección de sesión interna (Para que funcionen votos/comentarios sin tocar App.js)
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session: s } }) => setSession(s));
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, s) => setSession(s));
+    return () => subscription.unsubscribe();
+  }, []);
+
   const cleanDescription = (text) => {
     if (!text) return "";
-    return text
-      .replace(/\$/g, '')
-      .replace(/\\[a-zA-Z]+/g, ' ')
-      .replace(/\{|\}/g, '')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .substring(0, 160);
+    return text.replace(/\$/g, '').replace(/\\[a-zA-Z]+/g, ' ').replace(/\{|\}/g, '').replace(/\s+/g, ' ').trim().substring(0, 160);
   };
 
-  // --- VOTOS BLINDADOS ---
   const handleVote = async (idDestino, tipoEntidad, type) => {
-    if (!session) return alert("Debes entrar al búnker.");
+    if (!session) return alert("ACCESO DENEGADO: Debes entrar al búnker (P1) para votar.");
     const userId = session.user.id;
     const key = `${tipoEntidad}_${idDestino}`; 
     const currentVote = votosUsuario[key];
@@ -84,7 +82,6 @@ const P5_Ejercicio_Detalle = ({ session }) => {
     const fetchFullDetalle = async () => {
       try {
         setCargando(true);
-        // Traemos enunciado y tema para el SEO
         const { data: ej } = await supabase.from('tab_ejercicios').select('enunciado, tema').eq('id', numericId).single();
         setEjercicio(ej);
         const { data: res } = await supabase.from('tab_resoluciones').select('*').eq('ejercicio_id', numericId).order('orden', { ascending: true });
@@ -92,18 +89,10 @@ const P5_Ejercicio_Detalle = ({ session }) => {
         if (res) {
           const ids = res.map(r => r.id);
           const { data: coms } = await supabase.from('tab_comentarios').select('*').in('resolucion_id', ids);
-          
-          const finalHilo = res.map(r => ({ 
-            ...r, 
-            tab_comentarios: coms ? coms.filter(c => Number(c.resolucion_id) === Number(r.id)) : [] 
-          }));
-          
+          const finalHilo = res.map(r => ({ ...r, tab_comentarios: coms ? coms.filter(c => Number(c.resolucion_id) === Number(r.id)) : [] }));
           setHilo(finalHilo);
-
           const initialState = {};
-          finalHilo.forEach(r => {
-            initialState[`res_${r.id}`] = true;
-          });
+          finalHilo.forEach(r => { initialState[`res_${r.id}`] = true; });
           setChildrenHidden(initialState);
           setIsAllCollapsed(true);
 
@@ -149,7 +138,6 @@ const P5_Ejercicio_Detalle = ({ session }) => {
           <div className="thread-line"></div>
           <div className="child-content">
             <div className="comment-meta"><span className="author-user">user_{com.usuario_id?.substring(0,4)}</span></div>
-            {/* AGREGADO: whiteSpace: 'pre-wrap' para que los saltos de línea funcionen en los comentarios */}
             <div className="comment-body math-render" style={{ whiteSpace: 'pre-wrap' }}>
               <LaTeX>{com.contenido_latex || ''}</LaTeX>
             </div>
@@ -174,13 +162,9 @@ const P5_Ejercicio_Detalle = ({ session }) => {
   };
 
   const submitReply = async (text) => {
+    if (!session) return alert("ACCESO DENEGADO: Debes estar logueado.");
     if (!text.trim()) return;
-    const nuevo = {
-      ejercicio_id: numericId, resolucion_id: replyTarget.resolucionId,
-      usuario_id: session.user.id, contenido_latex: text,
-      parent_id: replyTarget.tipo === 'comentario' ? replyTarget.id : null,
-      votos_up: 0, votos_down: 0
-    };
+    const nuevo = { ejercicio_id: numericId, resolucion_id: replyTarget.resolucionId, usuario_id: session.user.id, contenido_latex: text, parent_id: replyTarget.tipo === 'comentario' ? replyTarget.id : null, votos_up: 0, votos_down: 0 };
     const { data } = await supabase.from('tab_comentarios').insert([nuevo]).select();
     if (data) setHilo(prev => prev.map(r => Number(r.id) === Number(replyTarget.resolucionId) ? { ...r, tab_comentarios: [...r.tab_comentarios, data[0]] } : r));
     setReplyTarget(null);
@@ -190,7 +174,6 @@ const P5_Ejercicio_Detalle = ({ session }) => {
 
   return (
     <div className="p5-layout">
-      {/* 🚀 SEO DINÁMICO BLINDADO */}
       <Helmet>
         <title>{`${ejercicio?.tema || 'Ejercicio'} Resuelto | SXTXRN`}</title>
         <meta name="description" content={cleanDescription(ejercicio?.enunciado)} />
@@ -198,18 +181,12 @@ const P5_Ejercicio_Detalle = ({ session }) => {
       </Helmet>
 
       <header className="p5-header">
-        <div className="p5-nav"><span onClick={() => navigate(-1)} style={{cursor:'pointer'}}>{'<'} VOLVER</span><div>{session ? "U" : "LOGIN"}</div></div>
+        <div className="p5-nav">
+          <span onClick={() => navigate(-1)} style={{cursor:'pointer'}}>{'<'} VOLVER</span>
+          {/* 🚀 ELIMINADO: Se quitó el indicador de LOGIN/U del header */}
+        </div>
         
-        {/* AGREGADO: whiteSpace y fontFamily para respetar el gráfico ASCII y los saltos de línea de las opciones */}
-        <div 
-          className="op-enunciado math-render" 
-          style={{ 
-            whiteSpace: 'pre-wrap', 
-            
-            lineHeight: '1.4',
-            overflowX: 'auto' // Por si el gráfico es muy ancho en celulares
-          }}
-        >
+        <div className="op-enunciado math-render" style={{ whiteSpace: 'pre-wrap', lineHeight: '1.4', overflowX: 'auto' }}>
           <LaTeX>{ejercicio?.enunciado || ''}</LaTeX>
         </div>
 
@@ -231,11 +208,7 @@ const P5_Ejercicio_Detalle = ({ session }) => {
                 <div className="comment-meta"><span className="author-sys">SXTXRN_SYS</span></div>
                 <div className="comment-body math-render">
                   <div className="math-block"><LaTeX>{res.math_block || ''}</LaTeX></div>
-                  
-                  {/* AGREGADO: whiteSpace para que las explicaciones de los profes tengan saltos de línea correctos */}
-                  <div className="text-block" style={{ whiteSpace: 'pre-wrap' }}>
-                    <LaTeX>{res.text_block || ''}</LaTeX>
-                  </div>
+                  <div className="text-block" style={{ whiteSpace: 'pre-wrap' }}><LaTeX>{res.text_block || ''}</LaTeX></div>
                 </div>
                 <div className="comment-actions">
                   <span className="vote-btns">
