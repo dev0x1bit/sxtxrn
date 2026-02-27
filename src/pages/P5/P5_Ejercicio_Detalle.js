@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'; //
+import { Helmet } from 'react-helmet-async';
 import { supabase } from '../../lib/supabase';
 import LaTeX from 'react-latex-next';
 import P5_ReplyDrawer from './P5_ReplyDrawer';
@@ -33,7 +33,7 @@ const P5_Ejercicio_Detalle = ({ session }) => {
       .substring(0, 160);
   };
 
-  // --- VOTOS BLINDADOS (Tu lógica original) ---
+  // --- VOTOS BLINDADOS ---
   const handleVote = async (idDestino, tipoEntidad, type) => {
     if (!session) return alert("Debes entrar al búnker.");
     const userId = session.user.id;
@@ -149,7 +149,10 @@ const P5_Ejercicio_Detalle = ({ session }) => {
           <div className="thread-line"></div>
           <div className="child-content">
             <div className="comment-meta"><span className="author-user">user_{com.usuario_id?.substring(0,4)}</span></div>
-            <div className="comment-body math-render"><LaTeX>{com.contenido_latex || ''}</LaTeX></div>
+            {/* AGREGADO: whiteSpace: 'pre-wrap' para que los saltos de línea funcionen en los comentarios */}
+            <div className="comment-body math-render" style={{ whiteSpace: 'pre-wrap' }}>
+              <LaTeX>{com.contenido_latex || ''}</LaTeX>
+            </div>
             <div className="comment-actions">
               <span className="vote-btns">
                 <span className={`v-up ${userVote === 'up' ? 'active' : ''}`} onClick={() => handleVote(com.id, 'comentario', 'up')}>▲ {com.votos_up || 0}</span>
@@ -196,7 +199,20 @@ const P5_Ejercicio_Detalle = ({ session }) => {
 
       <header className="p5-header">
         <div className="p5-nav"><span onClick={() => navigate(-1)} style={{cursor:'pointer'}}>{'<'} VOLVER</span><div>{session ? "U" : "LOGIN"}</div></div>
-        <div className="op-enunciado math-render"><LaTeX>{ejercicio?.enunciado || ''}</LaTeX></div>
+        
+        {/* AGREGADO: whiteSpace y fontFamily para respetar el gráfico ASCII y los saltos de línea de las opciones */}
+        <div 
+          className="op-enunciado math-render" 
+          style={{ 
+            whiteSpace: 'pre-wrap', 
+            
+            lineHeight: '1.4',
+            overflowX: 'auto' // Por si el gráfico es muy ancho en celulares
+          }}
+        >
+          <LaTeX>{ejercicio?.enunciado || ''}</LaTeX>
+        </div>
+
         <div className="global-controls">
           <span className="control-btn" onClick={handleGlobalToggle}>
             {isAllCollapsed ? '[ EXPANDIR TODO ]' : '[ CONTRAER TODO ]'}
@@ -215,7 +231,11 @@ const P5_Ejercicio_Detalle = ({ session }) => {
                 <div className="comment-meta"><span className="author-sys">SXTXRN_SYS</span></div>
                 <div className="comment-body math-render">
                   <div className="math-block"><LaTeX>{res.math_block || ''}</LaTeX></div>
-                  <div className="text-block"><LaTeX>{res.text_block || ''}</LaTeX></div>
+                  
+                  {/* AGREGADO: whiteSpace para que las explicaciones de los profes tengan saltos de línea correctos */}
+                  <div className="text-block" style={{ whiteSpace: 'pre-wrap' }}>
+                    <LaTeX>{res.text_block || ''}</LaTeX>
+                  </div>
                 </div>
                 <div className="comment-actions">
                   <span className="vote-btns">
