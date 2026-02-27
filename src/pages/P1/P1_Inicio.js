@@ -11,10 +11,9 @@ const P1_Inicio = () => {
   const [modalUsuario, setModalUsuario] = useState(false); 
   const [datosBunker, setDatosBunker] = useState([]); 
   const [cargando, setCargando] = useState(true);
-  const [session, setSession] = useState(null); // 🛡️ Sesión independiente
+  const [session, setSession] = useState(null); 
   const navigate = useNavigate();
 
-  // 1. Detección de sesión (Independiente de App.js)
   useEffect(() => {
     const getInitialSession = async () => {
       const { data: { session: currentSession } } = await supabase.auth.getSession();
@@ -22,8 +21,8 @@ const P1_Inicio = () => {
     };
     getInitialSession();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, currentSession) => {
-      setSession(currentSession);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
     });
 
     return () => {
@@ -31,7 +30,6 @@ const P1_Inicio = () => {
     };
   }, []);
 
-  // 2. Carga de datos del radar
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,13 +42,19 @@ const P1_Inicio = () => {
         if (resMaterias.error) throw resMaterias.error;
         if (resFacultades.error) throw resFacultades.error;
 
-        const combinados = resMaterias.data.map(m => {
-          const f = resFacultades.data.find(facu => facu.id === m.facultad_id);
-          return {
-            ...m,
-            nombreFacultad: f ? f.nombre : 'SXTXRN'
-          };
-        });
+        // 🛡️ FILTRO DE CÓDIGO: Solo materias que empiezan con números (ej: "27 - ...")
+        const combinados = resMaterias.data
+          .filter(m => m.nombre && /^\d+/.test(m.nombre.trim())) // 🚀 Solo si empieza con dígitos
+          .map(m => {
+            const f = resFacultades.data.find(facu => facu.id === m.facultad_id);
+            if (!f || !f.nombre || f.nombre.trim().length === 0) return null;
+
+            return {
+              ...m,
+              nombreFacultad: f.nombre.trim()
+            };
+          })
+          .filter(item => item !== null); 
 
         setDatosBunker(combinados);
       } catch (error) {
@@ -62,7 +66,6 @@ const P1_Inicio = () => {
     fetchData();
   }, []);
 
-  // 3. Lógica de Filtrado y Agrupamiento
   const resultadosFiltrados = datosBunker.filter(item => {
     const query = busqueda.toLowerCase();
     return (
@@ -71,6 +74,7 @@ const P1_Inicio = () => {
     );
   });
 
+  // 🚀 Si una facultad no tiene materias que pasaron el filtro Regex, NO aparece acá
   const grupos = resultadosFiltrados.reduce((acc, item) => {
     if (!acc[item.nombreFacultad]) {
       acc[item.nombreFacultad] = [];
