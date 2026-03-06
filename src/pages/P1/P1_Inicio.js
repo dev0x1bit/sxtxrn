@@ -86,7 +86,7 @@ const P1_Inicio = () => {
   return (
     <div className="p1-layout">
       <Helmet>
-        <title>SXTXRN | Inicio - El Búnker del CBC</title>
+        <title>SATXRN | Inicio - El Búnker del CBC</title>
       </Helmet>
 
       <header className="top-bar">
