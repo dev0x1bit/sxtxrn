@@ -175,7 +175,7 @@ const P5_Ejercicio_Detalle = () => {
   return (
     <div className="p5-layout">
       <Helmet>
-        <title>{`${ejercicio?.tema || 'Ejercicio'} Resuelto | SXTXRN`}</title>
+        <title>{`${ejercicio?.tema || 'Ejercicio'} Resuelto | SATXRN`}</title>
         <meta name="description" content={cleanDescription(ejercicio?.enunciado)} />
         <link rel="canonical" href={`https://satxrn.com.ar/ejercicio/${id}`} />
       </Helmet>

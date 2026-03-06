@@ -63,7 +63,7 @@ const P4_Examen_Feed = () => {
   return (
     <div className="p4-layout">
       <Helmet>
-        <title>{`Ejercicios de ${tituloExamen.toUpperCase()} | SXTXRN`}</title>
+        <title>{`Ejercicios de ${tituloExamen.toUpperCase()} | SATXRN`}</title>
         <meta 
           name="description" 
           content={`Lista de ejercicios resueltos de ${tituloExamen} en el búnker.`} 

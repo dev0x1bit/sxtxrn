@@ -63,10 +63,10 @@ const P3_Materias = () => {
   return (
     <div className="p3-layout">
       <Helmet>
-        <title>{`Recursos de ${displayTitle.toUpperCase()} | SXTXRN`}</title>
+        <title>{`Recursos de ${displayTitle.toUpperCase()} | SATXRN`}</title>
         <meta 
           name="description" 
-          content={`Descargá parciales y guías de ${displayTitle} en SXTXRN.`} 
+          content={`Descargá parciales y guías de ${displayTitle} en SATXRN.`} 
         />
         <link rel="canonical" href={`https://satxrn.com.ar/materia/${id}`} />
       </Helmet>

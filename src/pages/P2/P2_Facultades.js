@@ -41,12 +41,12 @@ const P2_Facultades = () => {
     traerMateriasReal();
   }, [id]);
 
-  const tituloFacultad = id ? id.toUpperCase().replace(/-/g, ' ') : 'SXTXRN';
+  const tituloFacultad = id ? id.toUpperCase().replace(/-/g, ' ') : 'SATXRN';
 
   return (
     <div className="p2-layout">
       <Helmet>
-        <title>{`Materias de ${tituloFacultad} | SXTXRN`}</title>
+        <title>{`Materias de ${tituloFacultad} | SATXRN`}</title>
       </Helmet>
 
       <header className="top-bar">
