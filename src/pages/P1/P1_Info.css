@@ -1,0 +1,94 @@
+/* src/pages/P1/P1_Info.css */
+
+/* Mantené el estilo del layout IGUAL que en P1_Inicio para que no haya saltos */
+.info-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh; /* Usar dvh como en Inicio */
+  padding: 15px;  /* Mismo padding que en Inicio */
+  background-color: #050505; /* Mismo fondo que Inicio */
+  font-family: 'VCR_OSD', monospace; /* MISMA FUENTE QUE INICIO */
+  overflow: hidden; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  box-sizing: border-box; /* Fundamental para que el padding no rompa el ancho */
+}
+
+/* El main toma el espacio disponible, igual que en Inicio */
+.content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow-y: auto; /* Permitir scroll solo dentro del contenido si es necesario */
+}
+
+.info-content {
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #444;
+  padding: 30px;
+  background-color: rgba(15, 0, 0, 0.9);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* EL FOOTER EXACTAMENTE IGUAL AL DE P1_Inicio */
+.bottom-bar {
+  flex-shrink: 0; /* 👈 EVITA QUE SE APLASTE */
+  border-top: 2px solid #ffffff;
+  padding-top: 10px;
+  padding-bottom: 10px; /* Un poco de aire abajo */
+  text-align: center;
+  background-color: #050505;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.home-icon {
+  color: #ccc; /* Ajustado al color base de Inicio */
+  font-weight: normal; /* VCR_OSD suele verse mejor en normal */
+  font-size: 1.2rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.home-icon:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* TEXTOS Y COLORES */
+.white-title { 
+  color: #ffffff; 
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+.white-text { color: #cccccc; margin: 5px 0; }
+.white-link { color: #888; text-decoration: none; font-weight: bold; transition: 0.3s; }
+.white-link:hover { color: #ffffff; text-shadow: 0 0 8px #fff; }
+.white-divider { border: 0; border-bottom: 1px dashed #444; opacity: 0.5; }
+
+/* LA LINEA ROJA LATERAL */
+.multiline {
+  border-left: 3px solid #ff0000; 
+  padding-left: 20px;
+  margin: 25px 0;
+}
+
+.cita-moreno { font-style: italic; color: #cccccc; line-height: 1.5; margin: 0; }
+.firma-moreno { text-align: right; color: #ffffff; margin-top: 10px; font-weight: bold; }
+
+.links-network { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
+
+/* Solo dejamos un fade-in muy sutil para que no sea un golpe tan seco */
+.fade-in {
+  animation: fadeIn 0.4s ease-in forwards;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

@@ -160,8 +160,13 @@ const P1_Inicio = () => {
         )}
       </main>
 
-      <footer className="bottom-bar">
-        <div className="home-icon" onClick={() => { setMenuAbierto(false); setBusqueda(''); }}> [ ⌂ ] </div>
+      <footer className="bottom-bar" style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+        <div className="home-icon" onClick={() => { setMenuAbierto(false); setBusqueda(''); }} style={{ cursor: 'pointer' }}> 
+          [ ⌂ ] 
+        </div>
+        <div className="home-icon" onClick={() => navigate('/info')} style={{ cursor: 'pointer' }}> 
+          [ m ] 
+        </div>
       </footer>
 
       {modalUsuario && (
